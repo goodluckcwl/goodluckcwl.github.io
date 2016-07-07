@@ -1,0 +1,355 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>集成学习概述 | Goodluckcwl&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="一、集成学习(Ensemble Learning)集成学习是指通过训练多个分类器，然后将这些分类器组合起来，来获得比单个分类器更优的性能（比最好的那个分类器还要好）。如果每个分类器都是同种类型的（比如都是决策树或者都是SVM等等），那么这些单个的分类器我们称为基学习器；如果集成中包含不同类型的分类器，这样的集成是异质的。需要注意的是，这些单个的分类器性能不一定要很好，只需要比随机猜测好就可以。在我">
+<meta property="og:type" content="article">
+<meta property="og:title" content="集成学习概述">
+<meta property="og:url" content="http://goodluckcwl.github.io/2016/05/31/集成学习概述/index.html">
+<meta property="og:site_name" content="Goodluckcwl's blog">
+<meta property="og:description" content="一、集成学习(Ensemble Learning)集成学习是指通过训练多个分类器，然后将这些分类器组合起来，来获得比单个分类器更优的性能（比最好的那个分类器还要好）。如果每个分类器都是同种类型的（比如都是决策树或者都是SVM等等），那么这些单个的分类器我们称为基学习器；如果集成中包含不同类型的分类器，这样的集成是异质的。需要注意的是，这些单个的分类器性能不一定要很好，只需要比随机猜测好就可以。在我">
+<meta property="og:updated_time" content="2016-07-07T08:22:59.808Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="集成学习概述">
+<meta name="twitter:description" content="一、集成学习(Ensemble Learning)集成学习是指通过训练多个分类器，然后将这些分类器组合起来，来获得比单个分类器更优的性能（比最好的那个分类器还要好）。如果每个分类器都是同种类型的（比如都是决策树或者都是SVM等等），那么这些单个的分类器我们称为基学习器；如果集成中包含不同类型的分类器，这样的集成是异质的。需要注意的是，这些单个的分类器性能不一定要很好，只需要比随机猜测好就可以。在我">
+  
+    <link rel="alternative" href="/atom.xml" title="Goodluckcwl&#39;s blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" type="image/x-icon" href="/logo.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link href="//fonts.lug.ustc.edu.cn/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+  
+</head>
+<body>
+<div id="container">
+  <div id="wrap">
+    <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Goodluckcwl&#39;s blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Weiliang Chen,ISEE,ZJU,Hangzhou,P.R.C.</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">文章</a>
+        
+          <a class="main-nav-link" href="/about">关于</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+		<div id="search-form-wrap">
+		  <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://goodluckcwl.github.io"></form>
+		</div>
+    </div>
+  </div>
+</header>
+    <div class="outer">
+      <section id="main"><article id="post-集成学习概述" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/05/31/集成学习概述/" class="article-date">
+  <time datetime="2016-05-31T08:01:41.000Z" itemprop="datePublished">2016-05-31</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      集成学习概述
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+		<!-- Table of Contents -->
+		
+		  <div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#一、集成学习-Ensemble-Learning"><span class="toc-number">1.</span> <span class="toc-text">一、集成学习(Ensemble Learning)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1、强可学习VS弱可学习"><span class="toc-number">1.1.</span> <span class="toc-text">1、强可学习VS弱可学习</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#二、Bagging与随机森林（Random-Forest）、随机蕨（Random-Fern）"><span class="toc-number">2.</span> <span class="toc-text">二、Bagging与随机森林（Random Forest）、随机蕨（Random Fern）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1、决策树（Decision-Tree）"><span class="toc-number">2.1.</span> <span class="toc-text">1、决策树（Decision Tree）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ID3"><span class="toc-number">2.1.1.</span> <span class="toc-text">ID3</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#C4-5"><span class="toc-number">2.1.2.</span> <span class="toc-text">C4.5</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CART"><span class="toc-number">2.1.3.</span> <span class="toc-text">CART</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#防止过拟合"><span class="toc-number">2.1.4.</span> <span class="toc-text">防止过拟合</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2、Bagging集成"><span class="toc-number">2.2.</span> <span class="toc-text">2、Bagging集成</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3、随机森林-Random-Forest"><span class="toc-number">2.3.</span> <span class="toc-text">3、随机森林(Random Forest)</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#三、提升算法（Boosting）"><span class="toc-number">3.</span> <span class="toc-text">三、提升算法（Boosting）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#"><span class="toc-number">3.1.</span> <span class="toc-text">　　</span></a></li></ol></li></ol>
+		  </div>
+			    
+        <h1 id="一、集成学习-Ensemble-Learning"><a href="#一、集成学习-Ensemble-Learning" class="headerlink" title="一、集成学习(Ensemble Learning)"></a><strong>一、集成学习(Ensemble Learning)</strong></h1><p>集成学习是指通过训练多个分类器，然后将这些分类器组合起来，来获得比单个分类器更优的性能（比最好的那个分类器还要好）。如果每个分类器都是同种类型的（比如都是决策树或者都是SVM等等），那么这些单个的分类器我们称为基学习器；如果集成中包含不同类型的分类器，这样的集成是异质的。需要注意的是，这些单个的分类器性能不一定要很好，只需要比随机猜测好就可以。在我们一般的经验中，如果把好的东西与坏的东西掺杂在一起，那么结果通常是比最坏的要好但比最好的要差一些。那么，为什么集成学习可以获得比最好的单一学习器更好的性能呢？这要从人们对一个问题的争论谈起，即，强可学习与弱可学习是否等价。<br><a id="more"></a></p>
+<h2 id="1、强可学习VS弱可学习"><a href="#1、强可学习VS弱可学习" class="headerlink" title="1、强可学习VS弱可学习"></a>1、强可学习VS弱可学习</h2><p><strong> 强可学习（(Strong PAC Learnability）：</strong>一个概念C在假设空间H下是强可学习的，是指存在一个算法A，对$\forall c \epsilon C$、输入空间上的任意分布D以及$\forall \varepsilon  \epsilon (0,\frac{1}{2})$和$\forall \delta \epsilon (0,\frac{1}{2})$，从数据集D中给定多项式个（与$\frac{1}{\varepsilon},\frac{1}{\delta}$）独立同分布的样本，存在一个假设$h\epsilon H$，使得：<br>            $$P(err(h)\le \varepsilon)\ge 1-\delta $$<br><strong>弱可学习（Weak PAC Learnability）</strong>一个概念C在假设空间H下是弱可学习的，是指存在一个算法A和一个$\gamma &gt;0$，对$\forall c \epsilon C$、输入空间上的任意分布D以及$\forall \delta \epsilon (0,\frac{1}{2})$，从数据集D中给定多项式个（与$\frac{1}{\delta}$同阶）独立同分布的样本，存在一个假设$h\epsilon H$，使得：<br>$$P(err(h)\le \frac{1}{2}-\gamma)\ge 1-\delta $$<br>也就是说，一个概念强可学习，那么其错误几乎可以很小；而一个弱可学习的概念，则只是比随机猜测好一点。<br>Rob Schapire证明了强可学习与弱可学习是等价的，于是在学习中如果存在弱学习算法，我们就可以通过组合多个弱学习算法来得到强学习算法。<br><strong>如何选择学习器？</strong><br>每个学习器应尽可能不相关，同时分类错误率小于0.5。分类器要有足够的多样性（Diversity）。如何获得这些不相关的学习器呢？一种方法是，对训练数据集采样，这样采样出的子集有差异，训练出来的学习器也就有较大的差异；另一种方法是，先训练一个分类器，然后根据这个分类器的表现改变训练数据的分布，使得被分类错误的样本有更大的权重。这样，集成学习方法可以分成两类，一类是bagging/随机森林，一类是提升算法（Boosting）。</p>
+<hr>
+<h1 id="二、Bagging与随机森林（Random-Forest）、随机蕨（Random-Fern）"><a href="#二、Bagging与随机森林（Random-Forest）、随机蕨（Random-Fern）" class="headerlink" title="二、Bagging与随机森林（Random Forest）、随机蕨（Random Fern）"></a><strong>二、Bagging与随机森林（Random Forest）、随机蕨（Random Fern）</strong></h1><h2 id="1、决策树（Decision-Tree）"><a href="#1、决策树（Decision-Tree）" class="headerlink" title="1、决策树（Decision Tree）"></a><strong>1、决策树（Decision Tree）</strong></h2><p>决策树是一个常用的机器学习算法。它采用了分而治之的策略，也就是对一个分类问题，每次从学习得到的特征集中选取一个特征把输入数据分成两类。训练也就是生成决策树的时候，最关键的就是选择每个节点的划分标准。按照节点划分标准的不同，决策树可以分成三类：ID3、C4.5、CART。</p>
+<h3 id="ID3"><a href="#ID3" class="headerlink" title="ID3"></a><strong>ID3</strong></h3><p>ID3算法每次选择一个特征，使得样本集的信息量减少最大。这样，熵减少得最快，有望获得一棵深度最浅的树。具体是：已知训练样本集D(假设有C类)，我们可以根据这个样本集中每一类出现的概率，算出样本集D包含的信息量。然后，从特征集X中选择一个特征x，则我们可以计算已知x的情况下各类的条件概率，然后计算出已知x的情况下D包含的信息量。也就是说，我们要选择一个x使得x与D相互包含的信息量最大:<br>                                               $${argmax}_{x\epsilon X}I(x,D) $$</p>
+<h3 id="C4-5"><a href="#C4-5" class="headerlink" title="C4.5"></a><strong>C4.5</strong></h3><p>C4.5算法不直接用信息增益，而是使用信息增益率来选择最优划分。</p>
+<h3 id="CART"><a href="#CART" class="headerlink" title="CART"></a><strong>CART</strong></h3><p>CART使用基尼指数来选择划分。基尼指数反映的是从数据集D中随机抽取两个样本，其类别标记不一致的概率。因此基尼指数越少，数据集D包含的信息量越少。CART在候选特征集中选取一个特征，使得划分后基尼指数最小。</p>
+<h3 id="防止过拟合"><a href="#防止过拟合" class="headerlink" title="防止过拟合"></a><strong>防止过拟合</strong></h3><p>决策树防止过拟合的方法分别是：</p>
+<ul>
+<li>剪枝：包括预剪枝、后剪枝</li>
+<li>集成学习</li>
+</ul>
+<p>实际经验表明，决策树划分标准的选择，如信息增益、信息增益率、基尼指数虽然对决策树的深度有较大影响，但对泛化性能影响有限。而剪枝对决策树泛化性能的影响是相当显著的。</p>
+<h2 id="2、Bagging集成"><a href="#2、Bagging集成" class="headerlink" title="2、Bagging集成"></a><strong>2、Bagging集成</strong></h2><p>如前所述，训练每个分类器的时候，每次从训练数据集中采样，用样本集训练基分类器。Bagging是一种有放回的采样。也就是训练的时候使用了相互有交叠的子集。</p>
+<h2 id="3、随机森林-Random-Forest"><a href="#3、随机森林-Random-Forest" class="headerlink" title="3、随机森林(Random Forest)"></a><strong>3、随机森林(Random Forest)</strong></h2><ul>
+<li>随机森林在以决策树为基学习器构建bagging集成基础上做了一些修改：在决策树训练的过程中引入了随机的属性选择，对决策树的每个节点，从该节点的属性集中随机选择一个子集，然后再从这个子集中选择一个最优的属性作为划分。这种随机选择增强了基学习器的多样性。</li>
+<li>引入选择属性的随机性，降低了单个决策树的性能，但随着学习器数目的增加，随机森林比Bagging收敛到更低的泛化误差。</li>
+</ul>
+<hr>
+<h1 id="三、提升算法（Boosting）"><a href="#三、提升算法（Boosting）" class="headerlink" title="三、提升算法（Boosting）"></a><strong>三、提升算法（Boosting）</strong></h1><p>1、常用的提升算法包括Adaboost(自适应提升算法)、Gradient Boost（梯度提升）等。<br>Boosting算法的训练过程是：从初始训练集中训练出一个基学习器，再根据基学习器调整训练样本的分布，使得先前分类错误的样本获得更多的关注，然后用调整后的样本分布训练下一个基学习器。如此重复直到基学习器数目达到预定的值。最后输出是这T个学习器的某种加权。<br>2、提升算法的关键有两个，一是如何改变训练样本的分布；二是如何将弱分类器组合成强分类器。<br>Adaboost训练时提高那些被前一轮分类错误的样本的权值，而降低那些被分类正确的样本的权值；Gradient Boost每一次的计算都是为了减少上一次的残差，使得损失函数在梯度方向下降。</p>
+<p><strong>Adaboost算法</strong></p>
+<blockquote>
+<p>输入：训练集D={(x1,y1),(x2,y2),…,(xm,ym)};基学习算法$\varepsilon$;训练轮数T<br>过程：<br>1、$D_1(x)=\frac{1}{m}$<br>2、for t=1,2,3,…,T,do<br>$h_t=\varepsilon(D,D_t)$<br>$\varepsilon<em>t=P</em>{x\sim D_t}(h_t(x)\ne f(x))$<br>if $\varepsilon_t&gt;0.5$,then break<br>$\alpha_t=\frac{1}{2}ln\frac{1-\varepsilon_t}{\varepsilon<em>t}$<br>$D</em>{t+1}(x)=\frac{D_t(x)}{Z_t}\times\begin{cases}exp(-\alpha_t),if　h_t(x)=f(x)\exp(\alpha_t),if　 h<em>t(x)\ne f(x)\end{cases}$<br>end for<br>输出: $H(x)=sign(\Sigma</em>{t=1}^T\alpha_t h_t(x))$</p>
+</blockquote>
+<h2 id=""><a href="#" class="headerlink" title="　　"></a>　　</h2><p>参考文献：<br>[1]李航.统计学习方法<br>[2]周志华.机器学习</p>
+
+      
+	  
+  <div class="article-statement">
+    <hr> 
+    1. 除非注明，本博文即为原创，转载请注明链接地址 <br>
+    2. 本博文只代表博主当时的观点或结论，请不要恶意攻击 <br>
+    3. 如果本文帮到了您，不妨点一下 <a>右下角</a> 的 <a>分享到</a> 按钮，让更多的人看到 <br>
+	<!-- ，或者 <a href='/about/index.html#zan-shang'>小额赞赏</a> 我。-->
+  </div>
+
+
+
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://goodluckcwl.github.io/2016/05/31/集成学习概述/" data-id="ciqbz0x8w0000hja5e4lbp0n8" class="article-share-link" data-share="baidu" data-title="集成学习概述">Share</a>
+      
+
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Maching-Learning/">Maching Learning</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/07/04/Ubuntu14.04 安装Caffe/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Ubuntu14.04安装Caffe
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+  
+</article>
+
+</section>
+      
+      <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recommend Posts</h3>
+    <div class="widget">
+      <ul>
+        
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Links</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="http://blog.csdn.net/u014230646" target="_blank">My CSDN</a>
+          </li>
+        
+          <li>
+            <a href="https://github.com/goodluckcwl/" target="_blank">My GitHub</a>
+          </li>
+        
+          <li>
+            <a href="https://www.researchgate.net/profile/Weiliang_Chen3?ev=hdr_xprf" target="_blank">My ResearchGate</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Deep-Learning/" style="font-size: 10px;">Deep Learning</a> <a href="/tags/Maching-Learning/" style="font-size: 10px;">Maching Learning</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">2016年 07月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">2016年 05月</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+</aside>
+      
+    </div>
+    <footer id="footer">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"> </script>
+  
+  <div class="outer">
+    <div id="footer-info" class="inner" align = "center">
+      Copyright &copy; 2016 
+	  <a href="/" target="_blank"> Weiliang Chen </a> <br>
+      Powered by <a href="https://hexo.io/zh-cn/docs/index.html" target="_blank">Hexo</a>
+	  &nbsp;|&nbsp;
+      Theme by <a href="https://github.com/TaoSama/landscape-plus" target="_blank">landscape-plus</a>
+	  &nbsp;|&nbsp;
+	  <span id="busuanzi_container_site_pv">
+        总访问量 <a href="http://service.ibruce.info/" target="_blank"><span id="busuanzi_value_site_pv"></span></a> 次
+      </span>
+      <span id="busuanzi_container_site_uv">
+        <a href="http://service.ibruce.info/" target="_blank"><span id="busuanzi_value_site_uv"></span></a> 人
+      </span>  
+    </div>
+  </div>
+    <!-- 为超链接加上target='_blank'属性 -->
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('a[href^="http"]').each(function() {
+			$(this).attr('target', '_blank');
+		});
+	});
+	</script>
+</footer>
+  </div>
+  <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">文章</a>
+  
+    <a href="/about" class="mobile-nav-link">关于</a>
+  
+</nav>
+  <!-- totop start -->
+<div id="totop">
+<a title="totop"><img src="/img/scrollup.png"/></a>
+</div>
+
+<!-- totop end -->
+
+
+<!-- 百度分享 start -->
+
+<div id="article-share-box" class="article-share-box">
+  <div id="bdshare" class="bdsharebuttonbox article-share-links">
+    <a class="article-share-weibo" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a class="article-share-weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a class="article-share-qq" data-cmd="sqq" title="分享到QQ"></a>
+    <a class="article-share-renren" data-cmd="renren" title="分享到人人网"></a>
+    <a class="article-share-more" data-cmd="more" title="更多"></a>
+  </div>
+</div>
+<script>
+  function SetShareData(cmd, config) {
+    if (shareDataTitle && shareDataUrl) {
+      config.bdText = shareDataTitle;
+      config.bdUrl = shareDataUrl;
+    }
+    return config;
+  }
+  window._bd_share_config={
+    "common":{onBeforeClick: SetShareData},
+    "share":{"bdCustomStyle":"/css/bdshare.css"}
+  };
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+<!-- 百度分享 end -->
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+<! -- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+                processEscapes: true
+                    
+}
+  
+        });
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+tex2jax: {
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+                  
+}
+    
+        });
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Queue(function() {
+            var all = MathJax.Hub.getAllJax(), i;
+            for(i=0; i < all.length; i += 1) {
+                            all[i].SourceElement().parentNode.className += ' has-jax';
+                                    
+            }
+                
+        });
+</script>
+
+<script type="text/javascript" src="http://cdn.bootcss.com/mathjax/2.5.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<script src="/js/script.js"></script>
+
+</div>
+</body>
+</html>
