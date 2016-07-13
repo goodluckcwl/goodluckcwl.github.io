@@ -1,0 +1,398 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+  
+  <title>Ubuntu使用总结 | Goodluckcwl&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Ubuntu配置VPN上网Ubuntu中的网络管理机制">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ubuntu使用总结">
+<meta property="og:url" content="http://goodluckcwl.github.io/2016/06/09/Ubuntu使用总结/index.html">
+<meta property="og:site_name" content="Goodluckcwl's blog">
+<meta property="og:description" content="Ubuntu配置VPN上网Ubuntu中的网络管理机制">
+<meta property="og:updated_time" content="2016-07-13T06:39:05.289Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Ubuntu使用总结">
+<meta name="twitter:description" content="Ubuntu配置VPN上网Ubuntu中的网络管理机制">
+  
+    <link rel="alternative" href="/atom.xml" title="Goodluckcwl&#39;s blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" type="image/x-icon" href="/logo.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link href="//fonts.lug.ustc.edu.cn/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]--><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+</head>
+<body>
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="container">
+  <div id="wrap">
+    <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Goodluckcwl&#39;s blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Weiliang Chen,ISEE,ZJU,Hangzhou,P.R.C.</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">文章</a>
+        
+          <a class="main-nav-link" href="/about">关于</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+		<div id="search-form-wrap">
+		  <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://goodluckcwl.github.io"></form>
+		</div>
+    </div>
+  </div>
+</header>
+    <div class="outer">
+      <section id="main"><article id="post-Ubuntu使用总结" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/06/09/Ubuntu使用总结/" class="article-date">
+  <time datetime="2016-06-09T06:48:00.000Z" itemprop="datePublished">2016-06-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Ubuntu使用总结
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+		<!-- Table of Contents -->
+		
+		  <div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#ubuntu配置vpn上网"><span class="toc-number">1.</span> <span class="toc-text">Ubuntu配置VPN上网</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#ubuntu中的网络管理机制"><span class="toc-number">1.1.</span> <span class="toc-text">Ubuntu中的网络管理机制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置vpn"><span class="toc-number">1.2.</span> <span class="toc-text">配置VPN</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#常用的命令"><span class="toc-number">1.3.</span> <span class="toc-text">常用的命令</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ubuntu使用总结"><span class="toc-number">2.</span> <span class="toc-text">Ubuntu使用总结</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#修改环境变量"><span class="toc-number">2.1.</span> <span class="toc-text">修改环境变量</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ubuntu运行库"><span class="toc-number">3.</span> <span class="toc-text">Ubuntu运行库</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#ubuntu的运行库管理工具ldconfig"><span class="toc-number">3.1.</span> <span class="toc-text">Ubuntu的运行库管理工具ldconfig</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#共享库搜索路径ld_library_path"><span class="toc-number">3.2.</span> <span class="toc-text">共享库搜索路径LD_LIBRARY_PATH</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#其他"><span class="toc-number">3.3.</span> <span class="toc-text">其他</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ubuntu编译时包含路径和库目录"><span class="toc-number">4.</span> <span class="toc-text">Ubuntu编译时包含路径和库目录</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#pkg-config简介"><span class="toc-number">4.1.</span> <span class="toc-text">pkg-config简介</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#硬链接和软链接"><span class="toc-number">5.</span> <span class="toc-text">硬链接和软链接</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#update-alternatives切换软件版本"><span class="toc-number">6.</span> <span class="toc-text">update-alternatives切换软件版本</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ubuntu增加交换空间"><span class="toc-number">7.</span> <span class="toc-text">Ubuntu增加交换空间</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ubuntu远程登陆"><span class="toc-number">8.</span> <span class="toc-text">Ubuntu远程登陆</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#ubuntu远程登陆客户端"><span class="toc-number">8.1.</span> <span class="toc-text">Ubuntu远程登陆客户端</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ubuntu远程登陆服务器端"><span class="toc-number">8.2.</span> <span class="toc-text">Ubuntu远程登陆服务器端</span></a></li></ol></li></ol>
+		  </div>
+			    
+        <h1 id="ubuntu&#x914D;&#x7F6E;vpn&#x4E0A;&#x7F51;"><a href="#Ubuntu&#x914D;&#x7F6E;VPN&#x4E0A;&#x7F51;" class="headerlink" title="Ubuntu&#x914D;&#x7F6E;VPN&#x4E0A;&#x7F51;"></a><strong>Ubuntu&#x914D;&#x7F6E;VPN&#x4E0A;&#x7F51;</strong></h1><h2 id="ubuntu&#x4E2D;&#x7684;&#x7F51;&#x7EDC;&#x7BA1;&#x7406;&#x673A;&#x5236;"><a href="#Ubuntu&#x4E2D;&#x7684;&#x7F51;&#x7EDC;&#x7BA1;&#x7406;&#x673A;&#x5236;" class="headerlink" title="Ubuntu&#x4E2D;&#x7684;&#x7F51;&#x7EDC;&#x7BA1;&#x7406;&#x673A;&#x5236;"></a><strong>Ubuntu&#x4E2D;&#x7684;&#x7F51;&#x7EDC;&#x7BA1;&#x7406;&#x673A;&#x5236;</strong></h2><a id="more"></a>
+<p>Ubuntu&#x4E2D;&#x6709;&#x4E24;&#x79CD;&#x7F51;&#x7EDC;&#x7BA1;&#x7406;&#x65B9;&#x6848;:&#x6587;&#x672C;&#x914D;&#x7F6E;&#x5DE5;&#x5177;&#x4EE5;&#x53CA;&#x56FE;&#x50CF;&#x5316;&#x7684;&#x7BA1;&#x7406;&#x5DE5;&#x5177;NetworkManager.&#x8FD9;&#x4E24;&#x5957;&#x7F51;&#x7EDC;&#x7BA1;&#x7406;&#x5DE5;&#x5177;&#x662F;&#x72EC;&#x7ACB;&#x7684;,&#x4E3A;&#x4E86;&#x65B9;&#x4FBF;&#x6211;&#x53EA;&#x4F7F;&#x7528;&#x56FE;&#x5F62;&#x5316;&#x7684;&#x7BA1;&#x7406;&#x5DE5;&#x5177;.&#x8FD9;&#x6837;,&#x9700;&#x8981;&#x628A;/etc/network/interfaces&#x6587;&#x4EF6;&#x4E2D;&#x7684;&#x5176;&#x4ED6;&#x5185;&#x5BB9;&#x5220;&#x9664;,&#x53EA;&#x4FDD;&#x7559;&#x4E24;&#x884C;:</p>
+<blockquote>
+<p>auto lo<br>iface lo inet loopback</p>
+</blockquote>
+<p>&#x8FD9;&#x6837;,NetworkManager&#x624D;&#x4F1A;&#x63A5;&#x7BA1;&#x7F51;&#x7EDC;.<br>&#x4F46;&#x662F;,&#x8F93;&#x5165;nmcli dev&#x547D;&#x4EE4;,&#x53D1;&#x73B0;&#x4EE5;&#x592A;&#x7F51;&#x4E0D;&#x53EF;&#x7528;,&#x67E5;&#x770B;IP&#x5730;&#x5740;&#x540E;&#x53D1;&#x73B0;&#x6CA1;&#x6709;&#x5206;&#x914D;IP&#x5730;&#x5740;,&#x6240;&#x4EE5;&#x7EC8;&#x7AEF;&#x8F93;&#x5165;sudo dhclient enp2s0,&#x83B7;&#x53D6;IP&#x5730;&#x5740;.&#x4E4B;&#x540E;&#x5C31;&#x53EF;&#x4EE5;&#x5728;Ubuntu&#x53F3;&#x4E0A;&#x89D2;&#x7684;&#x7684;&#x7F51;&#x7EDC;&#x7BA1;&#x7406;&#x4E2D;&#x770B;&#x5230;enp2s0&#x4E86;.&#x914D;&#x7F6E;IP&#x5730;&#x5740;,&#x5B50;&#x7F51;&#x63A9;&#x7801;,&#x7F51;&#x5173;,DNS&#x670D;&#x52A1;&#x5668;&#x5730;&#x5740;,&#x5C31;&#x53EF;&#x4EE5;&#x4E0A;&#x5185;&#x7F51;&#x4E86;.</p>
+<h2 id="&#x914D;&#x7F6E;vpn"><a href="#&#x914D;&#x7F6E;VPN" class="headerlink" title="&#x914D;&#x7F6E;VPN"></a><strong>&#x914D;&#x7F6E;VPN</strong></h2><p>&#x5230;&#x5185;&#x7F51;<a href="http://www.cc98.org/dispbbs.asp?BoardID=212&amp;id=2323871&amp;page=&amp;replyID=2323871&amp;star=1&#x4E0B;&#x8F7D;xl2tpd&#x5305;:xl2tpd_1.2.5+zju-1_i386.deb&#x6216;&#x8005;xl2tpd_1.2.5+zju-1_amd64.deb,&#x5B89;&#x88C5;" target="_blank" rel="external">http://www.cc98.org/dispbbs.asp?BoardID=212&amp;id=2323871&amp;page=&amp;replyID=2323871&amp;star=1&#x4E0B;&#x8F7D;xl2tpd&#x5305;:xl2tpd_1.2.5+zju-1_i386.deb&#x6216;&#x8005;xl2tpd_1.2.5+zju-1_amd64.deb,&#x5B89;&#x88C5;</a>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo dpkg -i xl2tpd_1.2.5+zju-1_amd64.deb</div></pre></td></tr></table></figure></p>
+<p>&#x5982;&#x679C;&#x7F3A;&#x5C11;&#x4F9D;&#x8D56;&#x9879;,&#x81EA;&#x884C;&#x5B89;&#x88C5;.<br>&#x5B89;&#x88C5;&#x5B8C;&#x6BD5;&#x6709;&#x63D0;&#x793A;,&#x6309;&#x7167;&#x63D0;&#x793A;&#x64CD;&#x4F5C;&#x5C31;&#x53EF;&#x4EE5;&#x4E86;.</p>
+<h2 id="&#x5E38;&#x7528;&#x7684;&#x547D;&#x4EE4;"><a href="#&#x5E38;&#x7528;&#x7684;&#x547D;&#x4EE4;" class="headerlink" title="&#x5E38;&#x7528;&#x7684;&#x547D;&#x4EE4;"></a><strong>&#x5E38;&#x7528;&#x7684;&#x547D;&#x4EE4;</strong></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ nmcli dev show</div><div class="line">$ nmcli dev</div></pre></td></tr></table></figure>
+<h1 id="ubuntu&#x4F7F;&#x7528;&#x603B;&#x7ED3;"><a href="#Ubuntu&#x4F7F;&#x7528;&#x603B;&#x7ED3;" class="headerlink" title="Ubuntu&#x4F7F;&#x7528;&#x603B;&#x7ED3;"></a><strong>Ubuntu&#x4F7F;&#x7528;&#x603B;&#x7ED3;</strong></h1><h2 id="&#x4FEE;&#x6539;&#x73AF;&#x5883;&#x53D8;&#x91CF;"><a href="#&#x4FEE;&#x6539;&#x73AF;&#x5883;&#x53D8;&#x91CF;" class="headerlink" title="&#x4FEE;&#x6539;&#x73AF;&#x5883;&#x53D8;&#x91CF;"></a><strong>&#x4FEE;&#x6539;&#x73AF;&#x5883;&#x53D8;&#x91CF;</strong></h2><p>&#x4FEE;&#x6539;/etc/profile&#x6587;&#x4EF6;</p>
+<h1 id="ubuntu&#x8FD0;&#x884C;&#x5E93;"><a href="#Ubuntu&#x8FD0;&#x884C;&#x5E93;" class="headerlink" title="Ubuntu&#x8FD0;&#x884C;&#x5E93;"></a><strong>Ubuntu&#x8FD0;&#x884C;&#x5E93;</strong></h1><h2 id="ubuntu&#x7684;&#x8FD0;&#x884C;&#x5E93;&#x7BA1;&#x7406;&#x5DE5;&#x5177;ldconfig"><a href="#Ubuntu&#x7684;&#x8FD0;&#x884C;&#x5E93;&#x7BA1;&#x7406;&#x5DE5;&#x5177;ldconfig" class="headerlink" title="Ubuntu&#x7684;&#x8FD0;&#x884C;&#x5E93;&#x7BA1;&#x7406;&#x5DE5;&#x5177;ldconfig"></a><strong>Ubuntu&#x7684;&#x8FD0;&#x884C;&#x5E93;&#x7BA1;&#x7406;&#x5DE5;&#x5177;ldconfig</strong></h2><p>ldconfig&#x7684;&#x4ECB;&#x7ECD;:<a href="http://linux.101hacks.com/unix/ldconfig/" target="_blank" rel="external">http://linux.101hacks.com/unix/ldconfig/</a><br>&#x5728; Linux &#x4E0B;&#x9762;&#xFF0C;&#x5171;&#x4EAB;&#x5E93;&#x7684;&#x5BFB;&#x627E;&#x548C;&#x52A0;&#x8F7D;&#x662F;&#x7531; /lib/ld.so &#x5B9E;&#x73B0;&#x7684;&#x3002; ld.so &#x5728;&#x6807;&#x51C6;&#x8DEF;&#x7ECF;(<strong>/lib, /usr/lib</strong>) &#x4E2D;&#x5BFB;&#x627E;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x7528;&#x5230;&#x7684;&#x5171;&#x4EAB;&#x5E93;&#x3002;&#x5982;&#x679C;&#x5171;&#x4EAB;&#x5E93;&#x4E0D;&#x5728;&#x6807;&#x51C6;&#x8DEF;&#x5F84;&#x4E0B;,&#x5219;&#x9700;&#x8981;&#x6307;&#x5B9A;&#x5171;&#x4EAB;&#x5E93;&#x7684;&#x641C;&#x7D22;&#x8DEF;&#x5F84;.ldconfig&#x662F;&#x4E00;&#x4E2A;&#x7BA1;&#x7406;linux&#x4E0B;&#x5171;&#x4EAB;&#x5E93;&#x7B26;&#x53F7;&#x94FE;&#x63A5;&#x7684;&#x5DE5;&#x5177;,&#x5171;&#x4EAB;&#x5E93;&#x7684;&#x67E5;&#x627E;&#x8DEF;&#x5F84;&#x5B9A;&#x4E49;&#x5728;/etc/ld.so.conf&#x4E2D;.ldconfig&#x7684;&#x4F5C;&#x7528;&#x5C31;&#x662F;&#x5C06;/etc/ld.so.conf&#x5217;&#x51FA;&#x7684;&#x8DEF;&#x5F84;&#x4E0B;&#x7684;&#x5E93;&#x6587;&#x4EF6;&#x7F13;&#x5B58;&#x5230;/etc/ld.so.cache&#x4E2D;,ld.so &#x52A0;&#x8F7D;&#x5171;&#x4EAB;&#x5E93;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4F1A;&#x4ECE; ld.so.cache&#x67E5;&#x627E;.&#x56E0;&#x6B64;&#x5F53;&#x5B89;&#x88C5;&#x5B8C;&#x4E00;&#x4E9B;&#x5E93;&#x6587;&#x4EF6;&#xFF0C;(&#x4F8B;&#x5982;&#x521A;&#x5B89;&#x88C5;&#x597D;glib)&#xFF0C;&#x6216;&#x8005;&#x4FEE;&#x6539;ld.so.conf&#x589E;&#x52A0;&#x65B0;&#x7684;&#x5E93;&#x8DEF;&#x5F84;&#x540E;&#xFF0C;&#x9700;&#x8981;&#x8FD0;&#x884C;&#x4E00;&#x4E0B;/sbin/ldconfig.&#x4F7F;&#x6240;&#x6709;&#x7684;&#x5E93;&#x6587;&#x4EF6;&#x90FD;&#x88AB;&#x7F13;&#x5B58;&#x5230;ld.so.cache&#x4E2D;&#xFF0C;&#x5982;&#x679C;&#x6CA1;&#x505A;&#xFF0C;&#x5373;&#x4F7F;&#x5E93;&#x6587;&#x4EF6;&#x660E;&#x660E;&#x5C31;&#x5728;/usr/lib&#x4E0B;&#x7684;&#xFF0C;&#x4E5F;&#x662F;&#x4E0D;&#x4F1A;&#x88AB;&#x4F7F;&#x7528;&#x7684;&#xFF0C;&#x7ED3;&#x679C;&#x7F16;&#x8BD1;&#x8FC7;&#x7A0B;&#x4E2D;&#x62A5;&#x9519;&#xFF0C;&#x7F3A;&#x5C11;xxx&#x5E93;.</p>
+<h2 id="&#x5171;&#x4EAB;&#x5E93;&#x641C;&#x7D22;&#x8DEF;&#x5F84;ld_library_path"><a href="#&#x5171;&#x4EAB;&#x5E93;&#x641C;&#x7D22;&#x8DEF;&#x5F84;LD-LIBRARY-PATH" class="headerlink" title="&#x5171;&#x4EAB;&#x5E93;&#x641C;&#x7D22;&#x8DEF;&#x5F84;LD_LIBRARY_PATH"></a><strong>&#x5171;&#x4EAB;&#x5E93;&#x641C;&#x7D22;&#x8DEF;&#x5F84;LD_LIBRARY_PATH</strong></h2><p>Linux &#x7684;&#x5148;&#x8F88; Unix &#x8FD8;&#x6709;&#x4E00;&#x4E2A;&#x73AF;&#x5883;&#x53D8;&#x91CF; - LD_LIBRARY_PATH &#x6765;&#x5904;&#x7406;&#x975E;&#x6807;&#x51C6;&#x8DEF;&#x7ECF;&#x7684;&#x5171;&#x4EAB;&#x5E93;&#x3002;ld.so &#x52A0;&#x8F7D;&#x5171;&#x4EAB;&#x5E93;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4E5F;&#x4F1A;&#x67E5;&#x627E;&#x8FD9;&#x4E2A;&#x53D8;&#x91CF;&#x6240;&#x8BBE;&#x7F6E;&#x7684;&#x8DEF;&#x7ECF;&#x3002;&#x4F46;&#x662F;&#xFF0C;&#x6709;&#x4E0D;&#x5C11;&#x58F0;&#x97F3;&#x4E3B;&#x5F20;&#x8981;&#x907F;&#x514D;&#x4F7F;&#x7528; LD_LIBRARY_PATH &#x53D8;&#x91CF;&#xFF0C;&#x5C24;&#x5176;&#x662F;&#x4F5C;&#x4E3A;&#x5168;&#x5C40;&#x53D8;&#x91CF;.&#x89E3;&#x51B3;&#x8FD9;&#x4E00;&#x95EE;&#x9898;&#x7684;&#x53E6;&#x4E00;&#x65B9;&#x6CD5;&#x662F;&#x5728;&#x7F16;&#x8BD1;&#x7684;&#x65F6;&#x5019;&#x901A;&#x8FC7; -R<path></path> &#x9009;&#x9879;&#x6307;&#x5B9A; run-time path.<br><strong>&#x5982;&#x679C;&#x9700;&#x8981;&#x7528;&#x5230;&#x7684;&#x5171;&#x4EAB;&#x5E93;&#x5728;&#x975E;&#x6807;&#x51C6;&#x8DEF;&#x5F84;</strong></p>
+<blockquote>
+<p>&#x65B9;&#x6CD5;&#x4E00;:&#x5C06;&#x975E;&#x6807;&#x51C6;&#x8DEF;&#x7ECF;&#x52A0;&#x5165; /etc/ld.so.conf&#xFF0C;&#x7136;&#x540E;&#x8FD0;&#x884C; ldconfig &#x751F;&#x6210; /etc/ld.so.cache&#x3002; ld.so &#x52A0;&#x8F7D;&#x5171;&#x4EAB;&#x5E93;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4F1A;&#x4ECE; ld.so.cache &#x67E5;&#x627E;&#x3002;<br>&#x65B9;&#x6CD5;&#x4E8C;:&#x5C06;&#x5171;&#x4EAB;&#x5E93;&#x8DEF;&#x5F84;&#x6DFB;&#x52A0;&#x5230;LD_LIBRARY_PATH&#x73AF;&#x5883;&#x53D8;&#x91CF;</p>
+</blockquote>
+<h2 id="&#x5176;&#x4ED6;"><a href="#&#x5176;&#x4ED6;" class="headerlink" title="&#x5176;&#x4ED6;"></a><strong>&#x5176;&#x4ED6;</strong></h2><p>ldd&#x547D;&#x4EE4;&#x67E5;&#x770B;&#x7A0B;&#x5E8F;&#x7684;&#x4F9D;&#x8D56;&#x5E93;</p>
+<h1 id="ubuntu&#x7F16;&#x8BD1;&#x65F6;&#x5305;&#x542B;&#x8DEF;&#x5F84;&#x548C;&#x5E93;&#x76EE;&#x5F55;"><a href="#Ubuntu&#x7F16;&#x8BD1;&#x65F6;&#x5305;&#x542B;&#x8DEF;&#x5F84;&#x548C;&#x5E93;&#x76EE;&#x5F55;" class="headerlink" title="Ubuntu&#x7F16;&#x8BD1;&#x65F6;&#x5305;&#x542B;&#x8DEF;&#x5F84;&#x548C;&#x5E93;&#x76EE;&#x5F55;"></a><strong>Ubuntu&#x7F16;&#x8BD1;&#x65F6;&#x5305;&#x542B;&#x8DEF;&#x5F84;&#x548C;&#x5E93;&#x76EE;&#x5F55;</strong></h1><h2 id="pkg-config&#x7B80;&#x4ECB;"><a href="#pkg-config&#x7B80;&#x4ECB;" class="headerlink" title="pkg-config&#x7B80;&#x4ECB;"></a><strong>pkg-config&#x7B80;&#x4ECB;</strong></h2><p>&#x7F16;&#x8BD1;&#x7A0B;&#x5E8F;&#x7684;&#x65F6;&#x5019;&#x9700;&#x8981;&#x6307;&#x5B9A;&#x5E93;&#x76EE;&#x5F55;&#x548C;&#x5305;&#x542B;&#x76EE;&#x5F55;,&#x4E3A;&#x4E86;&#x51CF;&#x5C11;&#x5E93;&#x7248;&#x672C;&#x7684;&#x66F4;&#x6362;&#x9020;&#x6210;&#x7F16;&#x8BD1;&#x547D;&#x4EE4;&#x7684;&#x53D8;&#x5316;,&#x4EBA;&#x4EEC;&#x4F7F;&#x7528;&#x4E86;&#x5E93;&#x4FE1;&#x606F;&#x63D0;&#x53D6;&#x5DE5;&#x5177;pkg-config:&#x4E8B;&#x5148;&#x628A;&#x5E93;&#x7684;&#x4F4D;&#x7F6E;&#x4FE1;&#x606F;&#x7B49;&#x4FDD;&#x5B58;&#x8D77;&#x6765;&#xFF0C;&#x9700;&#x8981;&#x7684;&#x65F6;&#x5019;&#x518D;&#x5C06;&#x5176;&#x4E2D;&#x6709;&#x7528;&#x7684;&#x4FE1;&#x606F;&#x63D0;&#x53D6;&#x51FA;&#x6765;&#x4F9B;&#x7F16;&#x8BD1;&#x548C;&#x94FE;&#x63A5;&#x4F7F;&#x7528;.<br>pkg-config &#x662F;&#x901A;&#x8FC7;&#x5E93;&#x63D0;&#x4F9B;&#x7684;&#x4E00;&#x4E2A;.pc &#x6587;&#x4EF6;&#x83B7;&#x5F97;&#x5E93;&#x7684;&#x5404;&#x79CD;&#x5FC5;&#x8981;&#x4FE1;&#x606F;&#x7684;&#xFF0C;&#x5305;&#x62EC;&#x7248;&#x672C;&#x4FE1;&#x606F;&#x3001;&#x7F16;&#x8BD1;&#x548C;&#x8FDE;&#x63A5;&#x9700;&#x8981;&#x7684;&#x53C2;&#x6570;&#x7B49;&#x3002;&#x8FD9;&#x4E9B;&#x4FE1;&#x606F;&#x53EF;&#x4EE5;&#x901A;&#x8FC7; pkg-config &#x63D0;&#x4F9B;&#x7684;&#x53C2;&#x6570;&#x5355;&#x72EC;&#x63D0;&#x53D6;&#x51FA;&#x6765;&#x76F4;&#x63A5;&#x4F9B;&#x7F16;&#x8BD1;&#x5668;&#x548C;&#x8FDE;&#x63A5;&#x5668;&#x4F7F;&#x7528;.<br>&#x5728;&#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x6BCF;&#x4E2A;&#x652F;&#x6301;pkg-config &#x7684;&#x5E93;&#x5BF9;&#x5E94;&#x7684; .pc &#x6587;&#x4EF6;&#x5728;&#x5B89;&#x88C5;&#x540E;&#x90FD;&#x4F4D;&#x4E8E;&#x5B89;&#x88C5;&#x76EE;&#x5F55;&#x4E2D;&#x7684; lib/pkgconfig &#x76EE;&#x5F55;&#x4E0B;&#x3002;&#x5B89;&#x88C5;&#x5B8C;&#x5E93;&#x4E4B;&#x540E;,&#x6211;&#x4EEC;&#x9700;&#x8981;&#x544A;&#x8BC9;&#x7CFB;&#x7EDF;&#x8BE5;&#x5E93;&#x5BF9;&#x5E94;&#x7684;pkgconfig&#x7684;&#x76EE;&#x5F55;.&#x9ED8;&#x8BA4;&#x7684;PKG_CONFIG_PATH&#x662F;/usr/lib/pkgconfig,&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5C06;&#x6211;&#x4EEC;&#x5B89;&#x88C5;&#x7684;&#x5E93;&#x7684;pkgconfig&#x76EE;&#x5F55;&#x6DFB;&#x52A0;&#x5230;&#x73AF;&#x5883;&#x53D8;&#x91CF;PKG_CONFIG_PATH.<br>&#x8FD9;&#x6837;,&#x6211;&#x4EEC;&#x5728;&#x7F16;&#x8BD1;&#x7A0B;&#x5E8F;&#x7684;&#x65F6;&#x5019;&#x4F1A;&#x65B9;&#x4FBF;&#x5F88;&#x591A;,&#x5047;&#x8BBE;&#x4E00;&#x4E2A; sample.c &#x7684;&#x7A0B;&#x5E8F;&#x7528;&#x5230;&#x4E86; Glib &#x5E93;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x8FD9;&#x6837;&#x7F16;&#x8BD1;&#xFF1A;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gcc -c `pkg-config --cflags glib-2.0` sample.c</div></pre></td></tr></table></figure></p>
+<p>&#x6709;&#x4E9B;&#x5E93;&#x4E0D;&#x652F;&#x6301;pkgconfig,&#x6BD4;&#x5982;boost&#x5E93;.</p>
+<h1 id="&#x786C;&#x94FE;&#x63A5;&#x548C;&#x8F6F;&#x94FE;&#x63A5;"><a href="#&#x786C;&#x94FE;&#x63A5;&#x548C;&#x8F6F;&#x94FE;&#x63A5;" class="headerlink" title="&#x786C;&#x94FE;&#x63A5;&#x548C;&#x8F6F;&#x94FE;&#x63A5;"></a><strong>&#x786C;&#x94FE;&#x63A5;&#x548C;&#x8F6F;&#x94FE;&#x63A5;</strong></h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ ln f1 f2 &#x521B;&#x5EFA;&#x4E00;&#x4E2A;f2&#x7684;&#x786C;&#x8FDE;&#x63A5;</div><div class="line">$ ln -s f1 f3 &#x521B;&#x5EFA;&#x4E00;&#x4E2A;f3&#x7684;&#x8F6F;&#x8FDE;&#x63A5;</div></pre></td></tr></table></figure>
+<p>&#x5220;&#x9664;f1&#xFF0C;f3&#x5931;&#x6548;&#xFF0C;f3&#x662F;f1&#x7684;&#x5FEB;&#x6377;&#x65B9;&#x5F0F;&#xFF1B;&#x5220;&#x9664;f1,f2&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x3002;<br>&#x53C2;&#x8003;&#xFF1A;<a href="http://blog.chinaunix.net/uid-26983585-id-3245031.html" target="_blank" rel="external">http://blog.chinaunix.net/uid-26983585-id-3245031.html</a></p>
+<hr>
+<h1 id="update-alternatives&#x5207;&#x6362;&#x8F6F;&#x4EF6;&#x7248;&#x672C;"><a href="#update-alternatives&#x5207;&#x6362;&#x8F6F;&#x4EF6;&#x7248;&#x672C;" class="headerlink" title="update-alternatives&#x5207;&#x6362;&#x8F6F;&#x4EF6;&#x7248;&#x672C;"></a><strong>update-alternatives&#x5207;&#x6362;&#x8F6F;&#x4EF6;&#x7248;&#x672C;</strong></h1><p> update-alternatives&#x662F;ubuntu&#x7CFB;&#x7EDF;&#x4E2D;&#x4E13;&#x95E8;&#x7EF4;&#x62A4;&#x7CFB;&#x7EDF;&#x547D;&#x4EE4;&#x94FE;&#x63A5;&#x7B26;&#x7684;&#x5DE5;&#x5177;&#xFF0C;&#x901A;&#x8FC7;&#x5B83;&#x53EF;&#x4EE5;&#x5F88;&#x65B9;&#x4FBF;&#x7684;&#x8BBE;&#x7F6E;&#x7CFB;&#x7EDF;&#x9ED8;&#x8BA4;&#x4F7F;&#x7528;&#x54EA;&#x4E2A;&#x547D;&#x4EE4;&#x3001;&#x54EA;&#x4E2A;&#x8F6F;&#x4EF6;&#x7248;&#x672C;.<br> &#x4ECB;&#x7ECD;&#x4E0B; update-alternatives &#x547D;&#x4EE4;&#x4E2D;&#x7684;&#x51E0;&#x4E2A;&#x4E3B;&#x8981;&#x9009;&#x9879;&#xFF0C;diplay&#x3001;install&#x3001;remove&#x3001;config:</p>
+<ul>
+<li>display:&#x67E5;&#x770B;&#x4E00;&#x4E2A;&#x547D;&#x4EE4;&#x94FE;&#x63A5;&#x7EC4;&#x7684;&#x6240;&#x6709;&#x4FE1;&#x606F;&#xFF0C;&#x5305;&#x62EC;&#x94FE;&#x63A5;&#x7684;&#x6A21;&#x5F0F;(&#x81EA;&#x52A8;&#x8FD8;&#x662F;&#x624B;&#x52A8;)&#x3001;&#x94FE;&#x63A5;priority&#x503C;&#x3001;&#x6240;&#x6709;&#x53EF; &#x7528;&#x7684;&#x94FE;&#x63A5;&#x547D;&#x4EE4;&#x7B49;&#x7B49;&#x3002;&#x4F7F;&#x7528;&#x8BED;&#x6CD5;&#xFF1A;update-alternatives &#x2013;display name ,&#x5176;&#x4E2D;name&#x4E3A;&#x547D;&#x4EE4;&#x94FE;&#x63A5;&#x540D;&#x79F0;</li>
+<li>install: &#x589E;&#x52A0;&#x4E00;&#x7EC4;&#x65B0;&#x7684;&#x7CFB;&#x7EDF;&#x547D;&#x4EE4;&#x94FE;&#x63A5;&#x7B26;&#x4E86;.&#x4F7F;&#x7528;&#x8BED;&#x6CD5;&#x4E3A;&#xFF1A;update-alternatives &#x2013;install link name path priority [&#x2013;slave link name path]&#x2026; &#x5176;&#x4E2D;link&#x4E3A;&#x7CFB;&#x7EDF;&#x4E2D;&#x529F;&#x80FD;&#x76F8;&#x540C;&#x8F6F;&#x4EF6;&#x7684;&#x516C;&#x5171;&#x94FE;&#x63A5;&#x76EE;&#x5F55;&#xFF0C;&#x6BD4;&#x5982;/usr/bin/java(&#x9700;&#x7EDD;&#x5BF9;&#x76EE;&#x5F55;); name&#x4E3A;&#x547D;&#x4EE4;&#x94FE;&#x63A5;&#x7B26;&#x540D;&#x79F0;,&#x5982;java&#xFF1B; path&#x4E3A;&#x4F60;&#x6240;&#x8981;&#x4F7F;&#x7528;&#x65B0;&#x547D;&#x4EE4;&#x3001;&#x65B0;&#x8F6F;&#x4EF6;&#x7684;&#x6240;&#x5728;&#x76EE;&#x5F55;&#xFF1B; priority&#x4E3A;&#x4F18;&#x5148;&#x7EA7;&#xFF0C;&#x5F53;&#x547D;&#x4EE4;&#x94FE;&#x63A5;&#x5DF2;&#x5B58;&#x5728;&#x65F6;&#xFF0C;&#x9700;&#x9AD8;&#x4E8E;&#x5F53;&#x524D;&#x503C;&#xFF0C;&#x56E0;&#x4E3A;&#x5F53;alternative&#x4E3A;&#x81EA;&#x52A8;&#x6A21;&#x5F0F;&#x65F6;,&#x7CFB;&#x7EDF;&#x9ED8;&#x8BA4;&#x542F;&#x7528;priority&#x9AD8;&#x7684;&#x94FE;&#x63A5;; &#x2013;slave&#x4E3A;&#x4ECE;alternative&#x3002;</li>
+<li>remove:&#x5220;&#x9664;&#x4E00;&#x4E2A;alternative&#x53CA;&#x76F8;&#x5173;&#x4ECE;alternative,&#x4F7F;&#x7528;&#x8BED;&#x6CD5;&#x4E3A;:update-alternatives &#x2013;remove name path,&#x5176;&#x4E2D;name&#x4E0E;path&#x4E0E;install&#x4E2D;&#x7684;&#x4E00;&#x81F4;&#xFF0C;&#x5982;&#x679C;&#x6240;&#x5220;&#x9664;&#x7684;&#x94FE;&#x63A5;&#x7EC4;&#x4E2D;&#x8FD8;&#x6709;&#x5176;&#x4ED6;&#x94FE;&#x63A5;&#x7684;&#x8BDD;&#xFF0C;&#x7CFB;&#x7EDF;&#x5C06;&#x4F1A;&#x81EA;&#x52A8;&#x4ECE;&#x5176;&#x4ED6;&#x4E2D;&#x9009;&#x62E9;&#x4E00;&#x4E2A;priority&#x9AD8;&#x7684;&#x94FE;&#x63A5;&#x4F5C;&#x4E3A;&#x9ED8;&#x8BA4;&#x4E3A;&#x94FE;&#x63A5;&#x3002;</li>
+<li>config:&#x5728;&#x73B0;&#x6709;&#x7684;&#x547D;&#x4EE4;&#x94FE;&#x63A5;&#x9009;&#x62E9;&#x4E00;&#x4E2A;&#x4F5C;&#x4E3A;&#x7CFB;&#x7EDF;&#x9ED8;&#x8BA4;&#x7684;</li>
+</ul>
+<hr>
+<h1 id="ubuntu&#x589E;&#x52A0;&#x4EA4;&#x6362;&#x7A7A;&#x95F4;"><a href="#Ubuntu&#x589E;&#x52A0;&#x4EA4;&#x6362;&#x7A7A;&#x95F4;" class="headerlink" title="Ubuntu&#x589E;&#x52A0;&#x4EA4;&#x6362;&#x7A7A;&#x95F4;"></a><strong>Ubuntu&#x589E;&#x52A0;&#x4EA4;&#x6362;&#x7A7A;&#x95F4;</strong></h1><p>1.&#x9996;&#x5148;&#x7528;&#x547D;&#x4EE4;free&#x67E5;&#x770B;&#x7CFB;&#x7EDF;&#x5185; Swap &#x5206;&#x533A;&#x5927;&#x5C0F;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ free -m</div></pre></td></tr></table></figure></p>
+<p>2.&#x521B;&#x5EFA;&#x4E00;&#x4E2A; Swap &#x6587;&#x4EF6;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo dd if=/dev/zero of=/mnt/swap bs=1024 count=16384</div></pre></td></tr></table></figure></p>
+<p>3.&#x683C;&#x5F0F;&#x5316;Swap &#x6587;&#x4EF6;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo mkswap /mnt/swap</div></pre></td></tr></table></figure></p>
+<p>4.&#x6FC0;&#x6D3B;&#x4EA4;&#x6362;&#x7A7A;&#x95F4;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo swapon swapfile</div></pre></td></tr></table></figure></p>
+<p>5.&#x4FEE;&#x6539;&#x6743;&#x9650;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ sudo chown root:root /mnt/swap</div><div class="line">$ sudo chmod 0600 /mnt/swap</div><div class="line">$ ls -l /mnt/swap</div></pre></td></tr></table></figure></p>
+<p>&#x663E;&#x793A;&#xFF1A;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ -rw------- 1 root root 17179869184  7&#x6708; 13 13:27 /mnt/swap</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ free -m</div><div class="line">             total       used       free     shared    buffers     cached</div><div class="line">Mem:          7890       7814         76        399         37       5154</div><div class="line">-/+ buffers/cache:       2622       5268</div><div class="line">Swap:        16383          0      16383</div></pre></td></tr></table></figure>
+<p>&#x5982;&#x679C;&#x8981;&#x5378;&#x8F7D;&#x4EA4;&#x6362;&#x7A7A;&#x95F4;&#xFF1A;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo swapoff swapfile</div></pre></td></tr></table></figure>
+<p>&#x5982;&#x679C;&#x60F3;&#x5F00;&#x673A;&#x81EA;&#x52A8;&#x6302;&#x8F7D;&#x5C31;&#x9700;&#x8981;&#x4FEE;&#x6539;fstab&#xFF0C;&#x8F93;&#x5165;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo gedit /etc/fstab</div></pre></td></tr></table></figure></p>
+<p>&#x5728;&#x6587;&#x4EF6;&#x7684;&#x6700;&#x540E;&#x9762;&#x52A0;&#x4E0A;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">swap&#xFF08;&#x6B64;&#x5904;swap&#x4E3A;swap&#x6587;&#x4EF6;&#x7684;&#x7EDD;&#x5BF9;&#x5730;&#x5740;&#xFF09;       none            swap    sw              0       0</div></pre></td></tr></table></figure></p>
+<hr>
+<h1 id="ubuntu&#x8FDC;&#x7A0B;&#x767B;&#x9646;"><a href="#Ubuntu&#x8FDC;&#x7A0B;&#x767B;&#x9646;" class="headerlink" title="Ubuntu&#x8FDC;&#x7A0B;&#x767B;&#x9646;"></a><strong>Ubuntu&#x8FDC;&#x7A0B;&#x767B;&#x9646;</strong></h1><h2 id="ubuntu&#x8FDC;&#x7A0B;&#x767B;&#x9646;&#x5BA2;&#x6237;&#x7AEF;"><a href="#Ubuntu&#x8FDC;&#x7A0B;&#x767B;&#x9646;&#x5BA2;&#x6237;&#x7AEF;" class="headerlink" title="Ubuntu&#x8FDC;&#x7A0B;&#x767B;&#x9646;&#x5BA2;&#x6237;&#x7AEF;"></a><strong>Ubuntu&#x8FDC;&#x7A0B;&#x767B;&#x9646;&#x5BA2;&#x6237;&#x7AEF;</strong></h2><p>&#x5B89;&#x88C5;&#x8FDC;&#x7A0B;&#x767B;&#x9646;&#x5BA2;&#x6237;&#x7AEF;&#xFF1A;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo apt-get install rdesktop</div></pre></td></tr></table></figure></p>
+<p>&#x67E5;&#x770B;&#x4F7F;&#x7528;&#x8BF4;&#x660E;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ rdesktop -h</div></pre></td></tr></table></figure></p>
+<p>&#x767B;&#x9646;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ rdesktop -f -a 24 xx.xx.xx.xx</div></pre></td></tr></table></figure></p>
+<p>&#x9009;&#x62E9;&#x5168;&#x5C4F;&#xFF0C;24&#x4F4D;&#x5F69;&#x8272;&#x3002;<br>&#x9000;&#x51FA;&#x5168;&#x5C4F;&#xFF1A;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Ctrl+Alt+Enter</div></pre></td></tr></table></figure></p>
+<h2 id="ubuntu&#x8FDC;&#x7A0B;&#x767B;&#x9646;&#x670D;&#x52A1;&#x5668;&#x7AEF;"><a href="#Ubuntu&#x8FDC;&#x7A0B;&#x767B;&#x9646;&#x670D;&#x52A1;&#x5668;&#x7AEF;" class="headerlink" title="Ubuntu&#x8FDC;&#x7A0B;&#x767B;&#x9646;&#x670D;&#x52A1;&#x5668;&#x7AEF;"></a><strong>Ubuntu&#x8FDC;&#x7A0B;&#x767B;&#x9646;&#x670D;&#x52A1;&#x5668;&#x7AEF;</strong></h2><p>1.&#x5B89;&#x88C5;mate&#x684C;&#x9762;<br>2.&#x5B89;&#x88C5;xrdp<br>&#x2026;</p>
+
+      
+	  
+  <div class="article-statement">
+    <hr> 
+    1. 除非注明，本博文即为原创，转载请注明链接地址 <br>
+    2. 本博文只代表博主当时的观点或结论，请不要恶意攻击 <br>
+    3. 如果本文帮到了您，不妨点一下 <a>右下角</a> 的 <a>分享到</a> 按钮，让更多的人看到 <br>
+	<!-- ，或者 <a href='/about/index.html#zan-shang'>小额赞赏</a> 我。-->
+  </div>
+
+
+
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://goodluckcwl.github.io/2016/06/09/Ubuntu使用总结/" data-id="ciqkjounp0003ewa5n5eha9i9" class="article-share-link" data-share="baidu" data-title="Ubuntu使用总结">Share</a>
+      
+
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/07/04/Ubuntu14.04 安装Caffe/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Ubuntu14.04安装Caffe
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/05/31/集成学习概述/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">集成学习概述</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+      
+      <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recommend Posts</h3>
+    <div class="widget">
+      <ul>
+        
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Links</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="http://blog.csdn.net/u014230646" target="_blank">My CSDN</a>
+          </li>
+        
+          <li>
+            <a href="https://github.com/goodluckcwl/" target="_blank">My GitHub</a>
+          </li>
+        
+          <li>
+            <a href="https://www.researchgate.net/profile/Weiliang_Chen3?ev=hdr_xprf" target="_blank">My ResearchGate</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Deep-Learning/" style="font-size: 10px;">Deep Learning</a> <a href="/tags/Linux/" style="font-size: 20px;">Linux</a> <a href="/tags/Maching-Learning/" style="font-size: 10px;">Maching Learning</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">2016年 07月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">2016年 06月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">2016年 05月</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+</aside>
+      
+    </div>
+    <footer id="footer">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"> </script>
+  
+  <div class="outer">
+    <div id="footer-info" class="inner" align = "center">
+      Copyright &copy; 2016 
+	  <a href="/" target="_blank"> Weiliang Chen </a> <br>
+      Powered by <a href="https://hexo.io/zh-cn/docs/index.html" target="_blank">Hexo</a>
+	  &nbsp;|&nbsp;
+      Theme by <a href="https://github.com/TaoSama/landscape-plus" target="_blank">landscape-plus</a>
+	  &nbsp;|&nbsp;
+	  <span id="busuanzi_container_site_pv">
+        总访问量 <a href="http://service.ibruce.info/" target="_blank"><span id="busuanzi_value_site_pv"></span></a> 次
+      </span>
+      <span id="busuanzi_container_site_uv">
+        <a href="http://service.ibruce.info/" target="_blank"><span id="busuanzi_value_site_uv"></span></a> 人
+      </span>  
+    </div>
+  </div>
+    <!-- 为超链接加上target='_blank'属性 -->
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('a[href^="http"]').each(function() {
+			$(this).attr('target', '_blank');
+		});
+	});
+	</script>
+</footer>
+  </div>
+  <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">文章</a>
+  
+    <a href="/about" class="mobile-nav-link">关于</a>
+  
+</nav>
+  <!-- totop start -->
+<div id="totop">
+<a title="totop"><img src="/img/scrollup.png"/></a>
+</div>
+
+<!-- totop end -->
+
+
+<!-- 百度分享 start -->
+
+<div id="article-share-box" class="article-share-box">
+  <div id="bdshare" class="bdsharebuttonbox article-share-links">
+    <a class="article-share-weibo" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a class="article-share-weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a class="article-share-qq" data-cmd="sqq" title="分享到QQ"></a>
+    <a class="article-share-renren" data-cmd="renren" title="分享到人人网"></a>
+    <a class="article-share-more" data-cmd="more" title="更多"></a>
+  </div>
+</div>
+<script>
+  function SetShareData(cmd, config) {
+    if (shareDataTitle && shareDataUrl) {
+      config.bdText = shareDataTitle;
+      config.bdUrl = shareDataUrl;
+    }
+    return config;
+  }
+  window._bd_share_config={
+    "common":{onBeforeClick: SetShareData},
+    "share":{"bdCustomStyle":"/css/bdshare.css"}
+  };
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+<!-- 百度分享 end -->
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+<! -- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+                processEscapes: true
+                    
+}
+  
+        });
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+tex2jax: {
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+                  
+}
+    
+        });
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Queue(function() {
+            var all = MathJax.Hub.getAllJax(), i;
+            for(i=0; i < all.length; i += 1) {
+                            all[i].SourceElement().parentNode.className += ' has-jax';
+                                    
+            }
+                
+        });
+</script>
+
+<script type="text/javascript" src="http://cdn.bootcss.com/mathjax/2.5.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<script src="/js/script.js"></script>
+
+</div><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+</body>
+</html>
