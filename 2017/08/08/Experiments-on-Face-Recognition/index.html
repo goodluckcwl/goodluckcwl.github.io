@@ -15,12 +15,25 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Goodluckcwl's blog">
-<meta property="og:url" content="http://goodluckcwl.github.io/archives/2016/06/index.html">
+<meta name="description" content="Sphereface-modelThis is the pre-trained model of SphereFace : Deep Hypersphere Embedding for Face Recognition.This model is trained on CASIA-Webface and the accuracy on LFW is 99.18%. 
+
+Training on We">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Experiments on Face Recognition">
+<meta property="og:url" content="http://goodluckcwl.github.io/2017/08/08/Experiments-on-Face-Recognition/index.html">
 <meta property="og:site_name" content="Goodluckcwl's blog">
+<meta property="og:description" content="Sphereface-modelThis is the pre-trained model of SphereFace : Deep Hypersphere Embedding for Face Recognition.This model is trained on CASIA-Webface and the accuracy on LFW is 99.18%. 
+
+Training on We">
+<meta property="og:image" content="https://github.com/goodluckcwl/Sphereface-model/raw/master/hist-cos.jpg">
+<meta property="og:image" content="https://github.com/goodluckcwl/Sphereface-model/raw/master/roc.jpg">
+<meta property="og:updated_time" content="2017-08-08T08:42:38.191Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Goodluckcwl's blog">
+<meta name="twitter:title" content="Experiments on Face Recognition">
+<meta name="twitter:description" content="Sphereface-modelThis is the pre-trained model of SphereFace : Deep Hypersphere Embedding for Face Recognition.This model is trained on CASIA-Webface and the accuracy on LFW is 99.18%. 
+
+Training on We">
+<meta name="twitter:image" content="https://github.com/goodluckcwl/Sphereface-model/raw/master/hist-cos.jpg">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -52,7 +65,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>Archives: 2016/6 | Goodluckcwl&#39;s blog</title>
+<title>Experiments on Face Recognition | Goodluckcwl&#39;s blog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -62,8 +75,8 @@
         fancybox: true,
         animate: true,
         isHome: false,
-        isPost: false,
-        isArchive: true,
+        isPost: true,
+        isArchive: false,
         isTag: false,
         isCategory: false,
         fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
@@ -256,56 +269,201 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap">
+      <div class="body-wrap"><article id="post-Experiments-on-Face-Recognition" class="article article-type-post" itemscope itemprop="blogPost">
   
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2016/06/08/Introduction to Dimensionality Reduction/" class="archive-article-date">
-      <time datetime="2016-06-08T15:09:00.000Z" itemprop="datePublished">06-08</time>
+    <div class="article-meta">
+      <a href="/2017/08/08/Experiments-on-Face-Recognition/" class="article-date">
+      <time datetime="2017-08-08T08:35:43.000Z" itemprop="datePublished">2017-08-08</time>
 </a>
 
 
-        </div>
-         
+    </div>
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/06/08/Introduction to Dimensionality Reduction/">Introduction to Dimensionality Reduction</a>
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Experiments on Face Recognition
     </h1>
   
 
-        <div class="article-info info-on-archive">
-          
+      </header>
+      
+      <div class="article-info article-info-post">
+        
 
-          
+        
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Machine-Learning/">Machine Learning</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Experiment/">Experiment</a></li></ul>
     </div>
 
-        </div>
         <div class="clearfix"></div>
-    </header>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="sphereface-model"><a href="#Sphereface-model" class="headerlink" title="Sphereface-model"></a>Sphereface-model</h1><p>This is the pre-trained model of SphereFace : Deep Hypersphere Embedding for Face Recognition.<br>This model is trained on CASIA-Webface and the accuracy on LFW is <strong>99.18%</strong>. </p>
+<ul>
+<li>Training on Webface with the default setting only got an accuracy of 98.5%&#xFF0C; which is much lower than the paper claimed(<strong>~99.26%</strong>). </li>
+<li>Fixed lambda = 5, kept on training, and got an accuracy of 98.8%.</li>
+<li>Decreased the lambda. Final accuracy is 99.18%.</li>
+</ul>
+<p>I think the performance can still be further improved by carefully fine-tuning. Feel free to use this model.</p>
+<h1 id="experiment-results"><a href="#Experiment-Results" class="headerlink" title="Experiment Results"></a>Experiment Results</h1><p>Train 22000(lambda=3.6, batch_size=170).</p>
+<p>The distribution of features on LFW:</p>
+<p><img src="https://github.com/goodluckcwl/Sphereface-model/raw/master/hist-cos.jpg" alt="Feature distribution"></p>
+<p>The roc curve:</p>
+<p><img src="https://github.com/goodluckcwl/Sphereface-model/raw/master/roc.jpg" alt="ROC"></p>
+<p>Accuracy on LFW:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Original</th>
+<th style="text-align:center">With PCA</th>
+<th style="text-align:center">With mirror trick</th>
+<th style="text-align:center">With mirror trick and PCA</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">98.88%</td>
+<td style="text-align:center">99.13%</td>
+<td style="text-align:center">98.98%</td>
+<td style="text-align:center"><strong>99.18%</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Here is the model:   <a href="https://pan.baidu.com/s/1pL0pmll" target="_blank" rel="external">https://pan.baidu.com/s/1pL0pmll</a></p>
+<p><strong>LFW</strong> evluation code can be found in [<a href="https://github.com/happynear/FaceVerification" target="_blank" rel="external">https://github.com/happynear/FaceVerification</a>]. </p>
+<h1 id="update"><a href="#Update" class="headerlink" title="Update"></a>Update</h1><ul>
+<li>Accuracy on LFW 99.18%  2017.07.31</li>
+</ul>
+<h2 id="reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://github.com/wy1iu/sphereface" target="_blank" rel="external">https://github.com/wy1iu/sphereface</a></p>
+<p><a href="https://github.com/happynear/NormFace/blob/master/MirrorFace.md" target="_blank" rel="external">https://github.com/happynear/NormFace/blob/master/MirrorFace.md</a></p>
+
+      
+    </div>
+    
   </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2017/08/08/Experiments-on-Face-Recognition/">Experiments on Face Recognition</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">Weiliang Chen</a></p>
+        <p><span>发布时间:</span>2017-08-08, 16:35:43</p>
+        <p><span>最后更新:</span>2017-08-08, 16:42:38</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2017/08/08/Experiments-on-Face-Recognition/" title="Experiments on Face Recognition">http://goodluckcwl.github.io/2017/08/08/Experiments-on-Face-Recognition/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://goodluckcwl.github.io/2017/08/08/Experiments-on-Face-Recognition/　　作者: Weiliang Chen" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2016/06/08/Introduction to Dimensionality Reduction/">
+                    Introduction to Dimensionality Reduction
+                </a>
+            </div>
+        
+    </nav>
+
+  
 </article>
-  
-  
-    </div></section>
-  
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#sphereface-model"><span class="toc-number">1.</span> <span class="toc-text">Sphereface-model</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#experiment-results"><span class="toc-number">2.</span> <span class="toc-text">Experiment Results</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#update"><span class="toc-number">3.</span> <span class="toc-text">Update</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#reference"><span class="toc-number">3.1.</span> <span class="toc-text">Reference</span></a></li></ol></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"Experiments on Face Recognition　| Goodluckcwl's blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
 
     
 
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2016/06/08/Introduction to Dimensionality Reduction/" title="下一篇: Introduction to Dimensionality Reduction">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/08/08/Experiments-on-Face-Recognition/">Experiments on Face Recognition</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/08/Introduction to Dimensionality Reduction/">Introduction to Dimensionality Reduction</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/31/A Brief Overview on Ensemble Learning/">A Brief Overview on Ensemble Learning</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
 </div>
       <footer id="footer">
     <div class="outer">

@@ -184,7 +184,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Machine-Learning/">Machine Learning</a></li></ul>
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Experiment/">Experiment</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Machine-Learning/">Machine Learning</a></li></ul>
                     </div>
                 </section>
                 
@@ -263,6 +263,103 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-Experiments-on-Face-Recognition" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/08/08/Experiments-on-Face-Recognition/" class="article-date">
+      <time datetime="2017-08-08T08:35:43.000Z" itemprop="datePublished">2017-08-08</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/08/08/Experiments-on-Face-Recognition/">Experiments on Face Recognition</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="sphereface-model"><a href="#Sphereface-model" class="headerlink" title="Sphereface-model"></a>Sphereface-model</h1><p>This is the pre-trained model of SphereFace : Deep Hypersphere Embedding for Face Recognition.<br>This model is trained on CASIA-Webface and the accuracy on LFW is <strong>99.18%</strong>. </p>
+<ul>
+<li>Training on Webface with the default setting only got an accuracy of 98.5%&#xFF0C; which is much lower than the paper claimed(<strong>~99.26%</strong>). </li>
+<li>Fixed lambda = 5, kept on training, and got an accuracy of 98.8%.</li>
+<li>Decreased the lambda. Final accuracy is 99.18%.</li>
+</ul>
+<p>I think the performance can still be further improved by carefully fine-tuning. Feel free to use this model.</p>
+<h1 id="experiment-results"><a href="#Experiment-Results" class="headerlink" title="Experiment Results"></a>Experiment Results</h1><p>Train 22000(lambda=3.6, batch_size=170).</p>
+<p>The distribution of features on LFW:</p>
+<p><img src="https://github.com/goodluckcwl/Sphereface-model/raw/master/hist-cos.jpg" alt="Feature distribution"></p>
+<p>The roc curve:</p>
+<p><img src="https://github.com/goodluckcwl/Sphereface-model/raw/master/roc.jpg" alt="ROC"></p>
+<p>Accuracy on LFW:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Original</th>
+<th style="text-align:center">With PCA</th>
+<th style="text-align:center">With mirror trick</th>
+<th style="text-align:center">With mirror trick and PCA</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">98.88%</td>
+<td style="text-align:center">99.13%</td>
+<td style="text-align:center">98.98%</td>
+<td style="text-align:center"><strong>99.18%</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Here is the model:   <a href="https://pan.baidu.com/s/1pL0pmll" target="_blank" rel="external">https://pan.baidu.com/s/1pL0pmll</a></p>
+<p><strong>LFW</strong> evluation code can be found in [<a href="https://github.com/happynear/FaceVerification" target="_blank" rel="external">https://github.com/happynear/FaceVerification</a>]. </p>
+<h1 id="update"><a href="#Update" class="headerlink" title="Update"></a>Update</h1><ul>
+<li>Accuracy on LFW 99.18%  2017.07.31</li>
+</ul>
+<h2 id="reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://github.com/wy1iu/sphereface" target="_blank" rel="external">https://github.com/wy1iu/sphereface</a></p>
+<p><a href="https://github.com/happynear/NormFace/blob/master/MirrorFace.md" target="_blank" rel="external">https://github.com/happynear/NormFace/blob/master/MirrorFace.md</a></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Experiment/">Experiment</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-Introduction to Dimensionality Reduction" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -292,8 +389,23 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-              <h1 id="Dimensionality-Reduction"><a href="#Dimensionality-Reduction" class="headerlink" title="Dimensionality Reduction"></a><strong>Dimensionality Reduction</strong></h1><p><strong>问题描述：</strong>设$X_1,X_2,…,X_p $为训练样本，每个$X_i$为M维矢量，要求一个$ N \times M $的矩阵A，使得：<br>
-          
+        <h1 id="dimensionality-reduction"><a href="#Dimensionality-Reduction" class="headerlink" title="Dimensionality Reduction"></a><strong>Dimensionality Reduction</strong></h1><p><strong>&#x95EE;&#x9898;&#x63CF;&#x8FF0;&#xFF1A;</strong>&#x8BBE;$X_1,X_2,&#x2026;,X_p $&#x4E3A;&#x8BAD;&#x7EC3;&#x6837;&#x672C;&#xFF0C;&#x6BCF;&#x4E2A;$X_i$&#x4E3A;M&#x7EF4;&#x77E2;&#x91CF;&#xFF0C;&#x8981;&#x6C42;&#x4E00;&#x4E2A;$ N \times M $&#x7684;&#x77E9;&#x9635;A&#xFF0C;&#x4F7F;&#x5F97;&#xFF1A;</p>
+<p>$$ Y_{N\times 1}=A_{N\times M}X_{M\times1} $$<br>$$ A_{N\times M}=\begin{bmatrix} a_1\\a_2\ &#x2026; \\a_N \end{bmatrix} $$<br>&#x5F53;$N\ll M$&#x65F6;&#xFF0C;&#x8FD9;&#x662F;&#x4E00;&#x79CD;&#x964D;&#x7EF4;&#x7B97;&#x6CD5;&#x3002;&#x8FD9;&#x91CC;&#x4E3B;&#x8981;&#x4ECB;&#x7ECD;&#x4E24;&#x79CD;&#x964D;&#x7EF4;&#x7B97;&#x6CD5;&#xFF1A;PCA&#x4E0E;LDA&#x3002;<strong>PCA&#x662F;&#x65E0;&#x76D1;&#x7763;&#x7684;&#x964D;&#x7EF4;&#x7B97;&#x6CD5;&#xFF0C;&#x8BA1;&#x7B97;&#x51FA;X&#x53D8;&#x5316;&#x6700;&#x5927;&#x7684;&#x524D;N&#x4E2A;&#x65B9;&#x5411;&#x5E76;&#x5C06;X&#x5411;&#x8FD9;&#x4E9B;&#x65B9;&#x5411;&#x6295;&#x5F71;&#xFF0C;&#x5F97;&#x5230;&#x4E00;&#x4E2A;N&#x7EF4;&#x7684;&#x5411;&#x91CF;Y&#x3002;LDA&#x662F;&#x6709;&#x76D1;&#x7763;&#x7684;&#x7B97;&#x6CD5;&#xFF0C;&#x6839;&#x636E;&#x7C7B;&#x522B;&#x6807;&#x8BB0;&#x627E;&#x5230;&#x6700;&#x5927;&#x5316;&#x7C7B;&#x95F4;&#x5DEE;&#x5F02;&#xFF0C;&#x6700;&#x5C0F;&#x5316;&#x7C7B;&#x5185;&#x5DEE;&#x5F02;&#x7684;&#x65B9;&#x5411;&#x3002;</strong></p>
+<h2 id="principle-component-analysis"><a href="#Principle-Component-Analysis" class="headerlink" title="Principle Component Analysis"></a><strong>Principle Component Analysis</strong></h2><p>&#x5C06;&#x4E0D;&#x540C;&#x7684;&#x6837;&#x672C;&#x6295;&#x5F71;&#x5230;&#x67D0;&#x4E00;&#x4E2A;&#x65B9;&#x5411;&#x4E0A;&#xFF0C;&#x82E5;&#x8FD9;&#x4E9B;&#x6837;&#x672C;&#x6295;&#x5F71;&#x540E;&#x5177;&#x6709;&#x8F83;&#x5927;&#x7684;&#x5DEE;&#x5F02;&#xFF0C;&#x5219;&#x6BD4;&#x8F83;&#x6613;&#x4E8E;&#x5206;&#x7C7B;&#x3002;&#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x8981;&#x627E;&#x8FD9;&#x6837;&#x4E00;&#x4E2A;&#x65B9;&#x5411;a&#xFF0C;&#x4F7F;&#x5F97;X&#x5411;a&#x6295;&#x5F71;&#x4E4B;&#x540E;&#x5F97;&#x5230;&#x7684;Y&#x7684;&#x65B9;&#x5DEE;&#x6700;&#x5927;&#x3002;</p>
+<h3 id="&#x6C42;&#x7B2C;&#x4E00;&#x4E2A;&#x65B9;&#x5411;a_1"><a href="#&#x6C42;&#x7B2C;&#x4E00;&#x4E2A;&#x65B9;&#x5411;-a-1" class="headerlink" title="&#x6C42;&#x7B2C;&#x4E00;&#x4E2A;&#x65B9;&#x5411;$a_1$"></a><strong>&#x6C42;&#x7B2C;&#x4E00;&#x4E2A;&#x65B9;&#x5411;$a_1$</strong></h3><p>&#x5047;&#x8BBE;&#x6211;&#x4EEC;&#x627E;&#x5230;&#x4E86;&#x524D;N&#x4E2A;&#x6EE1;&#x8DB3;&#x4E0A;&#x8FF0;&#x8981;&#x6C42;&#x7684;&#x65B9;&#x5411;&#xFF1A;$a_1,a_2,&#x2026;,a_N$&#xFF0C;&#x6BCF;&#x4E2A;$a_i$&#x90FD;&#x662F;&#x4E00;&#x4E2A;$1\times M$&#x7EF4;&#x7684;&#x77E2;&#x91CF;&#x3002;<br>&#x8BBE;&#x8BAD;&#x7EC3;&#x6837;&#x672C;&#x6709;P&#x4E2A;&#xFF0C;&#x5BF9;&#x65B9;&#x5411;$a_1$&#xFF0C;&#x6709;&#xFF1A;<br>$y_1=a_1 X_1,y_2=a_2 X_2,&#x2026;,y_p=a_1 X_p$<br>&#x4E0A;&#x8FF0;&#x95EE;&#x9898;&#x8981;&#x6C42;&#xFF1A;<br>$$Maximize: E(a_1)=\sum_{i=1}^p(y_i-\bar{y})^2$$<br>&#x56E0;&#x4E3A;$$\bar{y}=\frac{1}{p}\sum_{i=1}^p y_i=\frac{1}{p}\sum_{i=1}^p a_1 X_i=a_1\bar{X}$$<br>&#x6240;&#x4EE5;<br>$$E(a_1)=\sum_{i=1}^p(a_1X_i-a1 \bar{X})^2<br>=\sum_{i=1}^p(a_1(X_i-\bar{X}))^2<br>=\sum_{i=1}^p[a_1(X_i-\bar{X})][a_1(X_i-\bar{X})]^T<br>=a_1\sum_{i=1}^p(X_i-\bar{X})(X_i-\bar{X})^T a_1^T<br>=a_1\Sigma a_1^T$$<br>&#x5176;&#x4E2D;&#xFF0C;$\Sigma=\sum_{i=1}^p(X_i-\bar{X})(X_i-\bar{X})^T$&#x4E3A;&#x534F;&#x65B9;&#x5DEE;&#x77E9;&#x9635;&#x3002;&#x4F18;&#x5316;&#x95EE;&#x9898;&#x5316;&#x4E3A;&#xFF1A;<br>$$Maximize:E(a_1)=a_1\Sigma a_1^T$$<br>$$Subject&#x3000;to:a_1a_1^T=1$$<br>&#x8FD9;&#x4E2A;&#x7EA6;&#x675F;&#x6761;&#x4EF6;&#x662F;&#x56E0;&#x4E3A;&#x65B9;&#x5411;&#x7684;&#x6A21;&#x53EF;&#x4EE5;&#x8BA4;&#x4E3A;&#x662F;1&#x3002;<br>&#x7528;&#x62C9;&#x683C;&#x6717;&#x65E5;&#x4E58;&#x5B50;&#x6CD5;&#x6C42;&#x89E3;&#xFF1A;<br>$$M(a_1)=E(a_1)+\lambda(a_1a_1^T-1)$$<br>$$\frac{\partial M}{\partial a_1}<br>=\Sigma a_1^T-\lambda a_1^T=0$$<br>$$\Sigma a_1^T=\lambda a_1^T$$<br>&#x6240;&#x4EE5;&#xFF0C;$a_1^T$&#x662F;$\Sigma$&#x7684;&#x7279;&#x5F81;&#x5411;&#x91CF;&#xFF0C;$\lambda$&#x662F;$\Sigma$&#x7684;&#x7279;&#x5F81;&#x503C;&#x3002;<br>$$E(a_1)=a_1(\Sigma a_1^T)=a_1(\lambda a_1^T)<br>=\lambda a_1a_1^T=\lambda$$<br>&#x6240;&#x4EE5;&#xFF0C;&#x8981;&#x6700;&#x5927;&#x5316;$E(a_1)$&#xFF0C;&#x5C31;&#x662F;&#x8981;&#x6700;&#x5927;&#x5316;$\lambda$&#xFF0C;$a_1^T$&#x4E3A;$\Sigma$&#x6700;&#x5927;&#x7684;&#x7279;&#x5F81;&#x503C;&#x6240;&#x5BF9;&#x5E94;&#x7684;&#x7279;&#x5F81;&#x5411;&#x91CF;&#x3002;</p>
+<h3 id="&#x6C42;&#x7B2C;&#x4E8C;&#x4E2A;&#x65B9;&#x5411;a_2"><a href="#&#x6C42;&#x7B2C;&#x4E8C;&#x4E2A;&#x65B9;&#x5411;-a-2" class="headerlink" title="&#x6C42;&#x7B2C;&#x4E8C;&#x4E2A;&#x65B9;&#x5411;$a_2$"></a><strong>&#x6C42;&#x7B2C;&#x4E8C;&#x4E2A;&#x65B9;&#x5411;$a_2$</strong></h3><p>&#x6C42;&#x89E3;$a_2$&#x65F6;&#xFF0C;&#x8981;&#x4FDD;&#x8BC1;$a_2$&#x4E0E;$a_1$&#x6B63;&#x4EA4;&#xFF0C;&#x4F18;&#x5316;&#x95EE;&#x9898;&#x662F;&#xFF1A;<br>$$Maximize:E(a_2)=a_2\Sigma a_2^T$$<br>$$Subject&#x3000;to:a_2 a_2^T=1$$<br>$$a_1 a_2^T=a_2 a_1^T=1$$<br>&#x540C;&#x6837;&#x7528;&#x62C9;&#x683C;&#x6717;&#x65E5;&#x4E58;&#x5B50;&#x6CD5;&#x53EF;&#x4EE5;&#x6C42;&#x5F97;$a_2$&#x662F;$\Sigma$&#x7B2C;&#x4E8C;&#x5927;&#x7684;&#x7279;&#x5F81;&#x503C;&#x6240;&#x5BF9;&#x5E94;&#x7684;&#x7279;&#x5F81;&#x5411;&#x91CF;&#x3002;<br>&#x2026;</p>
+<h3 id="&#x7B97;&#x6CD5;&#x603B;&#x7ED3;"><a href="#&#x7B97;&#x6CD5;&#x603B;&#x7ED3;" class="headerlink" title="&#x7B97;&#x6CD5;&#x603B;&#x7ED3;"></a><strong>&#x7B97;&#x6CD5;&#x603B;&#x7ED3;</strong></h3><blockquote>
+<p>1&#x8F93;&#x5165;$X_1,X_2,&#x2026;,X_m$<br>2$\Sigma=\sum_{i=1}^p(X_i-\bar{X})(X_i-\bar{X})^T$<br>3&#x6C42;$\Sigma$&#x7684;&#x7279;&#x5F81;&#x503C;&#x548C;&#x7279;&#x5F81;&#x5411;&#x91CF;&#xFF1A;<br>$\lambda_1,\lambda_2,&#x2026;,\lambda_N,$&#x5BF9;&#x5E94;&#x7684;&#x7279;&#x5F81;&#x5411;&#x91CF;&#xFF0C;$a_1,a_2,&#x2026;,a_N$<br>4&#x53D8;&#x6362;&#x77E9;&#x9635;&#xFF1A;<br>$$A_{N\times M}=\begin{bmatrix} a_1\\a_2\ &#x2026; \\a_N \end{bmatrix}$$<br>&#x8BA1;&#x7B97;Y:<br>$$Y_{N\times 1}=A_{N\times M}X_{M\times1}$$</p>
+</blockquote>
+<h3 id="&#x601D;&#x8003;"><a href="#&#x601D;&#x8003;" class="headerlink" title="&#x601D;&#x8003;"></a><strong>&#x601D;&#x8003;</strong></h3><p>&#x95EE;&#x9898;&#xFF1A;$\Sigma$&#x7684;&#x7279;&#x5F81;&#x503C;&#x4E2D;&#x4E0D;&#x4E3A;0&#x7684;&#x6709;&#x591A;&#x5C11;&#xFF1F;</p>
+<ul>
+<li>&#x82E5;&#x5BF9;&#x79F0;&#x9635;$\Sigma$&#x7684;&#x79E9;&#x4E3A;r&#xFF0C;&#x5219;&#x4E0D;&#x4E3A;0&#x7684;&#x7279;&#x5F81;&#x503C;&#x6709;r&#x4E2A;</li>
+<li>&#x4E00;&#x4E2A;$N\times 1$&#x7684;&#x5411;&#x91CF;&#x4E0E;&#x4E00;&#x4E2A;$N\times 1$&#x7684;&#x5411;&#x91CF;&#x76F8;&#x4E58;&#xFF0C;&#x6240;&#x5F97;$N\times N$&#x7684;&#x77E9;&#x9635;&#xFF0C;&#x79E9;&#x6700;&#x591A;&#x662F;&#x591A;&#x5C11;&#xFF1F;&#x7B54;&#x6848;&#x662F;1&#x3002;</li>
+<li>&#x4E00;&#x4E2A;&#x79E9;&#x4E3A;$r_1$&#x7684;&#x77E9;&#x9635;&#x52A0;&#x4E0A;&#x4E00;&#x4E2A;&#x79E9;&#x4E3A;$r_2$&#x7684;&#x77E9;&#x9635;&#xFF0C;&#x79E9;&#x6700;&#x591A;&#x4E3A;$r_1+r_2$.<br>&#x53EF;&#x77E5;$\Sigma$&#x7684;&#x79E9;&#x6700;&#x591A;&#x4E3A;m-1&#x4E2A;&#xFF0C;&#x5176;&#x4E2D;m&#x662F;&#x8BAD;&#x7EC3;&#x6837;&#x672C;&#x7684;&#x4E2A;&#x6570;&#x3002;&#x8FD9;&#x662F;&#x56E0;&#x4E3A;&#xFF1A;$(X_i-\bar{X})(X_i-\bar{X})^T$&#x7684;&#x79E9;&#x4E3A;1&#xFF0C;&#x800C;$X_1-\bar{X},X_2-\bar{X},&#x2026;,X_m-\bar{X}$&#x6700;&#x591A;&#x6709;m-1&#x4E2A;&#x662F;&#x4E92;&#x76F8;&#x72EC;&#x7ACB;&#x7684;&#x3002;<br>&#x7EFC;&#x4E0A;&#xFF0C;$\Sigma$&#x7684;&#x7279;&#x5F81;&#x503C;&#x4E2D;&#x4E0D;&#x4E3A;0&#x7684;&#x6570;&#x76EE;$\le min(N,m-1)$</li>
+</ul>
+<h2 id="linear-discriminant-analysis"><a href="#Linear-Discriminant-Analysis" class="headerlink" title="Linear Discriminant Analysis"></a><strong>Linear Discriminant Analysis</strong></h2><p>&#x7EBF;&#x6027;&#x5224;&#x522B;&#x5206;&#x6790;&#x662F;&#x4E00;&#x79CD;&#x6709;&#x76D1;&#x7763;&#x7684;&#x964D;&#x7EF4;&#x7B97;&#x6CD5;&#x3002;&#x5B83;&#x7684;&#x6700;&#x4F18;&#x51C6;&#x5219;&#x662F;&#xFF1A;&#x7C7B;&#x95F4;&#x8DDD;&#x79BB;&#x5927;&#xFF0C;&#x7C7B;&#x5185;&#x8DDD;&#x79BB;&#x5C0F;&#x3002;<br>&#x4EE5;&#x4E8C;&#x5206;&#x7C7B;&#x95EE;&#x9898;&#x4E3A;&#x4F8B;&#xFF0C;LDA&#x95EE;&#x9898;&#x53EF;&#x4EE5;&#x63CF;&#x8FF0;&#x6210;&#xFF1A;<br>$$&#x5BF9;m&#x4E2A;M&#x7EF4;&#x7684;&#x8F93;&#x5165;&#x5411;&#x91CF;X_1,X_2,&#x2026;,X_m,&#x627E;&#x5230;&#x4E00;&#x4E2A;&#x77E9;&#x9635;W&#xFF0C;&#x4F7F;&#x5F97;\tilde{X}=WX$$<br>&#x9996;&#x5148;&#xFF0C;&#x8BA1;&#x7B97;$\tilde{X}$&#x7684;&#x6570;&#x5B66;&#x671F;&#x671B;&#xFF1A;<br>$$\tilde{\mu_1}=\frac{1}{N_1}=\sum_{\tilde{X}\epsilon C_1 }\tilde{X}<br> &#xFF0C; \tilde{\mu_2}=\frac{1}{N_2}=\sum_{\tilde{X}\epsilon C_2 }\tilde{X}$$<br> &#x65B9;&#x5DEE;:</p>
+<h2 id="sparse-representation"><a href="#Sparse-Representation" class="headerlink" title="Sparse Representation"></a><strong>Sparse Representation</strong></h2><p>&#x7A00;&#x758F;&#x8868;&#x8FBE;&#x95EE;&#x9898;&#x53EF;&#x4EE5;&#x63CF;&#x8FF0;&#x4E3A;&#xFF1A;&#x5BF9;$Y=AX$,&#x5DF2;&#x77E5;Y&#x548C;A&#xFF0C;&#x6C42;X&#x3002;</p>
+
       
     </div>
     
@@ -306,10 +418,6 @@
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Machine-Learning/">Machine Learning</a></li></ul>
     </div>
 
-      
-        <p class="article-more-link">
-          <a href="/2016/06/08/Introduction to Dimensionality Reduction/#more">more >></a>
-        </p>
       
       <div class="clearfix"></div>
     </div>
@@ -356,8 +464,33 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-              <h1 id="Ensemble-Learning"><a href="#Ensemble-Learning" class="headerlink" title="Ensemble Learning"></a><strong>Ensemble Learning</strong></h1><p>集成学习是指通过训练多个分类器，然后将这些分类器组合起来，来获得比单个分类器更优的性能（比最好的那个分类器还要好）。如果每个分类器都是同种类型的（比如都是决策树或者都是SVM等等），那么这些单个的分类器我们称为基学习器；如果集成中包含不同类型的分类器，这样的集成是异质的。需要注意的是，这些单个的分类器性能不一定要很好，只需要比随机猜测好就可以。在我们一般的经验中，如果把好的东西与坏的东西掺杂在一起，那么结果通常是比最坏的要好但比最好的要差一些。那么，为什么集成学习可以获得比最好的单一学习器更好的性能呢？这要从人们对一个问题的争论谈起，即，强可学习与弱可学习是否等价。<br>
-          
+        <h1 id="ensemble-learning"><a href="#Ensemble-Learning" class="headerlink" title="Ensemble Learning"></a><strong>Ensemble Learning</strong></h1><p>&#x96C6;&#x6210;&#x5B66;&#x4E60;&#x662F;&#x6307;&#x901A;&#x8FC7;&#x8BAD;&#x7EC3;&#x591A;&#x4E2A;&#x5206;&#x7C7B;&#x5668;&#xFF0C;&#x7136;&#x540E;&#x5C06;&#x8FD9;&#x4E9B;&#x5206;&#x7C7B;&#x5668;&#x7EC4;&#x5408;&#x8D77;&#x6765;&#xFF0C;&#x6765;&#x83B7;&#x5F97;&#x6BD4;&#x5355;&#x4E2A;&#x5206;&#x7C7B;&#x5668;&#x66F4;&#x4F18;&#x7684;&#x6027;&#x80FD;&#xFF08;&#x6BD4;&#x6700;&#x597D;&#x7684;&#x90A3;&#x4E2A;&#x5206;&#x7C7B;&#x5668;&#x8FD8;&#x8981;&#x597D;&#xFF09;&#x3002;&#x5982;&#x679C;&#x6BCF;&#x4E2A;&#x5206;&#x7C7B;&#x5668;&#x90FD;&#x662F;&#x540C;&#x79CD;&#x7C7B;&#x578B;&#x7684;&#xFF08;&#x6BD4;&#x5982;&#x90FD;&#x662F;&#x51B3;&#x7B56;&#x6811;&#x6216;&#x8005;&#x90FD;&#x662F;SVM&#x7B49;&#x7B49;&#xFF09;&#xFF0C;&#x90A3;&#x4E48;&#x8FD9;&#x4E9B;&#x5355;&#x4E2A;&#x7684;&#x5206;&#x7C7B;&#x5668;&#x6211;&#x4EEC;&#x79F0;&#x4E3A;&#x57FA;&#x5B66;&#x4E60;&#x5668;&#xFF1B;&#x5982;&#x679C;&#x96C6;&#x6210;&#x4E2D;&#x5305;&#x542B;&#x4E0D;&#x540C;&#x7C7B;&#x578B;&#x7684;&#x5206;&#x7C7B;&#x5668;&#xFF0C;&#x8FD9;&#x6837;&#x7684;&#x96C6;&#x6210;&#x662F;&#x5F02;&#x8D28;&#x7684;&#x3002;&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;&#xFF0C;&#x8FD9;&#x4E9B;&#x5355;&#x4E2A;&#x7684;&#x5206;&#x7C7B;&#x5668;&#x6027;&#x80FD;&#x4E0D;&#x4E00;&#x5B9A;&#x8981;&#x5F88;&#x597D;&#xFF0C;&#x53EA;&#x9700;&#x8981;&#x6BD4;&#x968F;&#x673A;&#x731C;&#x6D4B;&#x597D;&#x5C31;&#x53EF;&#x4EE5;&#x3002;&#x5728;&#x6211;&#x4EEC;&#x4E00;&#x822C;&#x7684;&#x7ECF;&#x9A8C;&#x4E2D;&#xFF0C;&#x5982;&#x679C;&#x628A;&#x597D;&#x7684;&#x4E1C;&#x897F;&#x4E0E;&#x574F;&#x7684;&#x4E1C;&#x897F;&#x63BA;&#x6742;&#x5728;&#x4E00;&#x8D77;&#xFF0C;&#x90A3;&#x4E48;&#x7ED3;&#x679C;&#x901A;&#x5E38;&#x662F;&#x6BD4;&#x6700;&#x574F;&#x7684;&#x8981;&#x597D;&#x4F46;&#x6BD4;&#x6700;&#x597D;&#x7684;&#x8981;&#x5DEE;&#x4E00;&#x4E9B;&#x3002;&#x90A3;&#x4E48;&#xFF0C;&#x4E3A;&#x4EC0;&#x4E48;&#x96C6;&#x6210;&#x5B66;&#x4E60;&#x53EF;&#x4EE5;&#x83B7;&#x5F97;&#x6BD4;&#x6700;&#x597D;&#x7684;&#x5355;&#x4E00;&#x5B66;&#x4E60;&#x5668;&#x66F4;&#x597D;&#x7684;&#x6027;&#x80FD;&#x5462;&#xFF1F;&#x8FD9;&#x8981;&#x4ECE;&#x4EBA;&#x4EEC;&#x5BF9;&#x4E00;&#x4E2A;&#x95EE;&#x9898;&#x7684;&#x4E89;&#x8BBA;&#x8C08;&#x8D77;&#xFF0C;&#x5373;&#xFF0C;&#x5F3A;&#x53EF;&#x5B66;&#x4E60;&#x4E0E;&#x5F31;&#x53EF;&#x5B66;&#x4E60;&#x662F;&#x5426;&#x7B49;&#x4EF7;&#x3002;</p>
+<h2 id="1-&#x5F3A;&#x53EF;&#x5B66;&#x4E60;vs&#x5F31;&#x53EF;&#x5B66;&#x4E60;"><a href="#1&#x3001;&#x5F3A;&#x53EF;&#x5B66;&#x4E60;VS&#x5F31;&#x53EF;&#x5B66;&#x4E60;" class="headerlink" title="1&#x3001;&#x5F3A;&#x53EF;&#x5B66;&#x4E60;VS&#x5F31;&#x53EF;&#x5B66;&#x4E60;"></a>1&#x3001;&#x5F3A;&#x53EF;&#x5B66;&#x4E60;VS&#x5F31;&#x53EF;&#x5B66;&#x4E60;</h2><p><strong> &#x5F3A;&#x53EF;&#x5B66;&#x4E60;&#xFF08;(Strong PAC Learnability&#xFF09;&#xFF1A;</strong> &#x4E00;&#x4E2A;&#x6982;&#x5FF5;C&#x5728;&#x5047;&#x8BBE;&#x7A7A;&#x95F4;H&#x4E0B;&#x662F;&#x5F3A;&#x53EF;&#x5B66;&#x4E60;&#x7684;&#xFF0C;&#x662F;&#x6307;&#x5B58;&#x5728;&#x4E00;&#x4E2A;&#x7B97;&#x6CD5;A&#xFF0C;&#x5BF9; $\forall c\epsilon C$,&#x8F93;&#x5165;&#x7A7A;&#x95F4;&#x4E0A;&#x7684;&#x4EFB;&#x610F;&#x5206;&#x5E03;D&#x4EE5;&#x53CA; $\forall \varepsilon  \epsilon (0,\frac{1}{2})$&#x548C;$\forall \delta \epsilon (0,\frac{1}{2})$&#xFF0C;&#x4ECE;&#x6570;&#x636E;&#x96C6;D&#x4E2D;&#x7ED9;&#x5B9A;&#x591A;&#x9879;&#x5F0F;&#x4E2A;&#xFF08;&#x4E0E;$\frac{1}{\varepsilon},\frac{1}{\delta}$&#xFF09;&#x72EC;&#x7ACB;&#x540C;&#x5206;&#x5E03;&#x7684;&#x6837;&#x672C;&#xFF0C;&#x5B58;&#x5728;&#x4E00;&#x4E2A;&#x5047;&#x8BBE;$h\epsilon H$&#xFF0C;&#x4F7F;&#x5F97;&#xFF1A;<br>$$P(err(h)\le \varepsilon)\ge 1-\delta $$<br><strong>&#x5F31;&#x53EF;&#x5B66;&#x4E60;&#xFF08;Weak PAC Learnability&#xFF09;</strong>&#x4E00;&#x4E2A;&#x6982;&#x5FF5;C&#x5728;&#x5047;&#x8BBE;&#x7A7A;&#x95F4;H&#x4E0B;&#x662F;&#x5F31;&#x53EF;&#x5B66;&#x4E60;&#x7684;&#xFF0C;&#x662F;&#x6307;&#x5B58;&#x5728;&#x4E00;&#x4E2A;&#x7B97;&#x6CD5;A&#x548C;&#x4E00;&#x4E2A;$\gamma &gt;0$&#xFF0C;&#x5BF9;$\forall c \epsilon C$&#x3001;&#x8F93;&#x5165;&#x7A7A;&#x95F4;&#x4E0A;&#x7684;&#x4EFB;&#x610F;&#x5206;&#x5E03;D&#x4EE5;&#x53CA;$\forall \delta \epsilon (0,\frac{1}{2})$&#xFF0C;&#x4ECE;&#x6570;&#x636E;&#x96C6;D&#x4E2D;&#x7ED9;&#x5B9A;&#x591A;&#x9879;&#x5F0F;&#x4E2A;&#xFF08;&#x4E0E;$\frac{1}{\delta}$&#x540C;&#x9636;&#xFF09;&#x72EC;&#x7ACB;&#x540C;&#x5206;&#x5E03;&#x7684;&#x6837;&#x672C;&#xFF0C;&#x5B58;&#x5728;&#x4E00;&#x4E2A;&#x5047;&#x8BBE;$h\epsilon H$&#xFF0C;&#x4F7F;&#x5F97;&#xFF1A;<br>$$P(err(h)\le \frac{1}{2}-\gamma)\ge 1-\delta $$<br>&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#xFF0C;&#x4E00;&#x4E2A;&#x6982;&#x5FF5;&#x5F3A;&#x53EF;&#x5B66;&#x4E60;&#xFF0C;&#x90A3;&#x4E48;&#x5176;&#x9519;&#x8BEF;&#x51E0;&#x4E4E;&#x53EF;&#x4EE5;&#x5F88;&#x5C0F;&#xFF1B;&#x800C;&#x4E00;&#x4E2A;&#x5F31;&#x53EF;&#x5B66;&#x4E60;&#x7684;&#x6982;&#x5FF5;&#xFF0C;&#x5219;&#x53EA;&#x662F;&#x6BD4;&#x968F;&#x673A;&#x731C;&#x6D4B;&#x597D;&#x4E00;&#x70B9;&#x3002;<br>Rob Schapire&#x8BC1;&#x660E;&#x4E86;&#x5F3A;&#x53EF;&#x5B66;&#x4E60;&#x4E0E;&#x5F31;&#x53EF;&#x5B66;&#x4E60;&#x662F;&#x7B49;&#x4EF7;&#x7684;&#xFF0C;&#x4E8E;&#x662F;&#x5728;&#x5B66;&#x4E60;&#x4E2D;&#x5982;&#x679C;&#x5B58;&#x5728;&#x5F31;&#x5B66;&#x4E60;&#x7B97;&#x6CD5;&#xFF0C;&#x6211;&#x4EEC;&#x5C31;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x7EC4;&#x5408;&#x591A;&#x4E2A;&#x5F31;&#x5B66;&#x4E60;&#x7B97;&#x6CD5;&#x6765;&#x5F97;&#x5230;&#x5F3A;&#x5B66;&#x4E60;&#x7B97;&#x6CD5;&#x3002;<br><strong>&#x5982;&#x4F55;&#x9009;&#x62E9;&#x5B66;&#x4E60;&#x5668;&#xFF1F;</strong><br>&#x6BCF;&#x4E2A;&#x5B66;&#x4E60;&#x5668;&#x5E94;&#x5C3D;&#x53EF;&#x80FD;&#x4E0D;&#x76F8;&#x5173;&#xFF0C;&#x540C;&#x65F6;&#x5206;&#x7C7B;&#x9519;&#x8BEF;&#x7387;&#x5C0F;&#x4E8E;0.5&#x3002;&#x5206;&#x7C7B;&#x5668;&#x8981;&#x6709;&#x8DB3;&#x591F;&#x7684;&#x591A;&#x6837;&#x6027;&#xFF08;Diversity&#xFF09;&#x3002;&#x5982;&#x4F55;&#x83B7;&#x5F97;&#x8FD9;&#x4E9B;&#x4E0D;&#x76F8;&#x5173;&#x7684;&#x5B66;&#x4E60;&#x5668;&#x5462;&#xFF1F;&#x4E00;&#x79CD;&#x65B9;&#x6CD5;&#x662F;&#xFF0C;&#x5BF9;&#x8BAD;&#x7EC3;&#x6570;&#x636E;&#x96C6;&#x91C7;&#x6837;&#xFF0C;&#x8FD9;&#x6837;&#x91C7;&#x6837;&#x51FA;&#x7684;&#x5B50;&#x96C6;&#x6709;&#x5DEE;&#x5F02;&#xFF0C;&#x8BAD;&#x7EC3;&#x51FA;&#x6765;&#x7684;&#x5B66;&#x4E60;&#x5668;&#x4E5F;&#x5C31;&#x6709;&#x8F83;&#x5927;&#x7684;&#x5DEE;&#x5F02;&#xFF1B;&#x53E6;&#x4E00;&#x79CD;&#x65B9;&#x6CD5;&#x662F;&#xFF0C;&#x5148;&#x8BAD;&#x7EC3;&#x4E00;&#x4E2A;&#x5206;&#x7C7B;&#x5668;&#xFF0C;&#x7136;&#x540E;&#x6839;&#x636E;&#x8FD9;&#x4E2A;&#x5206;&#x7C7B;&#x5668;&#x7684;&#x8868;&#x73B0;&#x6539;&#x53D8;&#x8BAD;&#x7EC3;&#x6570;&#x636E;&#x7684;&#x5206;&#x5E03;&#xFF0C;&#x4F7F;&#x5F97;&#x88AB;&#x5206;&#x7C7B;&#x9519;&#x8BEF;&#x7684;&#x6837;&#x672C;&#x6709;&#x66F4;&#x5927;&#x7684;&#x6743;&#x91CD;&#x3002;&#x8FD9;&#x6837;&#xFF0C;&#x96C6;&#x6210;&#x5B66;&#x4E60;&#x65B9;&#x6CD5;&#x53EF;&#x4EE5;&#x5206;&#x6210;&#x4E24;&#x7C7B;&#xFF0C;&#x4E00;&#x7C7B;&#x662F;bagging/&#x968F;&#x673A;&#x68EE;&#x6797;&#xFF0C;&#x4E00;&#x7C7B;&#x662F;&#x63D0;&#x5347;&#x7B97;&#x6CD5;&#xFF08;Boosting&#xFF09;&#x3002;</p>
+<hr>
+<h1 id="baggingrandom-forestand-random-fern"><a href="#Bagging-Random-Forest-and-Random-Fern" class="headerlink" title="Bagging,Random Forest,and Random Fern"></a><strong>Bagging,Random Forest,and Random Fern</strong></h1><h2 id="1-&#x51B3;&#x7B56;&#x6811;decision-tree"><a href="#1&#x3001;&#x51B3;&#x7B56;&#x6811;&#xFF08;Decision-Tree&#xFF09;" class="headerlink" title="1&#x3001;&#x51B3;&#x7B56;&#x6811;&#xFF08;Decision Tree&#xFF09;"></a><strong>1&#x3001;&#x51B3;&#x7B56;&#x6811;&#xFF08;Decision Tree&#xFF09;</strong></h2><p>&#x51B3;&#x7B56;&#x6811;&#x662F;&#x4E00;&#x4E2A;&#x5E38;&#x7528;&#x7684;&#x673A;&#x5668;&#x5B66;&#x4E60;&#x7B97;&#x6CD5;&#x3002;&#x5B83;&#x91C7;&#x7528;&#x4E86;&#x5206;&#x800C;&#x6CBB;&#x4E4B;&#x7684;&#x7B56;&#x7565;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x5BF9;&#x4E00;&#x4E2A;&#x5206;&#x7C7B;&#x95EE;&#x9898;&#xFF0C;&#x6BCF;&#x6B21;&#x4ECE;&#x5B66;&#x4E60;&#x5F97;&#x5230;&#x7684;&#x7279;&#x5F81;&#x96C6;&#x4E2D;&#x9009;&#x53D6;&#x4E00;&#x4E2A;&#x7279;&#x5F81;&#x628A;&#x8F93;&#x5165;&#x6570;&#x636E;&#x5206;&#x6210;&#x4E24;&#x7C7B;&#x3002;&#x8BAD;&#x7EC3;&#x4E5F;&#x5C31;&#x662F;&#x751F;&#x6210;&#x51B3;&#x7B56;&#x6811;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x6700;&#x5173;&#x952E;&#x7684;&#x5C31;&#x662F;&#x9009;&#x62E9;&#x6BCF;&#x4E2A;&#x8282;&#x70B9;&#x7684;&#x5212;&#x5206;&#x6807;&#x51C6;&#x3002;&#x6309;&#x7167;&#x8282;&#x70B9;&#x5212;&#x5206;&#x6807;&#x51C6;&#x7684;&#x4E0D;&#x540C;&#xFF0C;&#x51B3;&#x7B56;&#x6811;&#x53EF;&#x4EE5;&#x5206;&#x6210;&#x4E09;&#x7C7B;&#xFF1A;ID3&#x3001;C4.5&#x3001;CART&#x3002;</p>
+<h3 id="id3"><a href="#ID3" class="headerlink" title="ID3"></a><strong>ID3</strong></h3><p>ID3&#x7B97;&#x6CD5;&#x6BCF;&#x6B21;&#x9009;&#x62E9;&#x4E00;&#x4E2A;&#x7279;&#x5F81;&#xFF0C;&#x4F7F;&#x5F97;&#x6837;&#x672C;&#x96C6;&#x7684;&#x4FE1;&#x606F;&#x91CF;&#x51CF;&#x5C11;&#x6700;&#x5927;&#x3002;&#x8FD9;&#x6837;&#xFF0C;&#x71B5;&#x51CF;&#x5C11;&#x5F97;&#x6700;&#x5FEB;&#xFF0C;&#x6709;&#x671B;&#x83B7;&#x5F97;&#x4E00;&#x68F5;&#x6DF1;&#x5EA6;&#x6700;&#x6D45;&#x7684;&#x6811;&#x3002;&#x5177;&#x4F53;&#x662F;&#xFF1A;&#x5DF2;&#x77E5;&#x8BAD;&#x7EC3;&#x6837;&#x672C;&#x96C6;D(&#x5047;&#x8BBE;&#x6709;C&#x7C7B;)&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x6839;&#x636E;&#x8FD9;&#x4E2A;&#x6837;&#x672C;&#x96C6;&#x4E2D;&#x6BCF;&#x4E00;&#x7C7B;&#x51FA;&#x73B0;&#x7684;&#x6982;&#x7387;&#xFF0C;&#x7B97;&#x51FA;&#x6837;&#x672C;&#x96C6;D&#x5305;&#x542B;&#x7684;&#x4FE1;&#x606F;&#x91CF;&#x3002;&#x7136;&#x540E;&#xFF0C;&#x4ECE;&#x7279;&#x5F81;&#x96C6;X&#x4E2D;&#x9009;&#x62E9;&#x4E00;&#x4E2A;&#x7279;&#x5F81;x&#xFF0C;&#x5219;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x8BA1;&#x7B97;&#x5DF2;&#x77E5;x&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#x5404;&#x7C7B;&#x7684;&#x6761;&#x4EF6;&#x6982;&#x7387;&#xFF0C;&#x7136;&#x540E;&#x8BA1;&#x7B97;&#x51FA;&#x5DF2;&#x77E5;x&#x7684;&#x60C5;&#x51B5;&#x4E0B;D&#x5305;&#x542B;&#x7684;&#x4FE1;&#x606F;&#x91CF;&#x3002;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#xFF0C;&#x6211;&#x4EEC;&#x8981;&#x9009;&#x62E9;&#x4E00;&#x4E2A;x&#x4F7F;&#x5F97;x&#x4E0E;D&#x76F8;&#x4E92;&#x5305;&#x542B;&#x7684;&#x4FE1;&#x606F;&#x91CF;&#x6700;&#x5927;:<br>$${argmax}_{x\epsilon X}I(x,D) $$</p>
+<h3 id="c45"><a href="#C4-5" class="headerlink" title="C4.5"></a><strong>C4.5</strong></h3><p>C4.5&#x7B97;&#x6CD5;&#x4E0D;&#x76F4;&#x63A5;&#x7528;&#x4FE1;&#x606F;&#x589E;&#x76CA;&#xFF0C;&#x800C;&#x662F;&#x4F7F;&#x7528;&#x4FE1;&#x606F;&#x589E;&#x76CA;&#x7387;&#x6765;&#x9009;&#x62E9;&#x6700;&#x4F18;&#x5212;&#x5206;&#x3002;</p>
+<h3 id="cart"><a href="#CART" class="headerlink" title="CART"></a><strong>CART</strong></h3><p>CART&#x4F7F;&#x7528;&#x57FA;&#x5C3C;&#x6307;&#x6570;&#x6765;&#x9009;&#x62E9;&#x5212;&#x5206;&#x3002;&#x57FA;&#x5C3C;&#x6307;&#x6570;&#x53CD;&#x6620;&#x7684;&#x662F;&#x4ECE;&#x6570;&#x636E;&#x96C6;D&#x4E2D;&#x968F;&#x673A;&#x62BD;&#x53D6;&#x4E24;&#x4E2A;&#x6837;&#x672C;&#xFF0C;&#x5176;&#x7C7B;&#x522B;&#x6807;&#x8BB0;&#x4E0D;&#x4E00;&#x81F4;&#x7684;&#x6982;&#x7387;&#x3002;&#x56E0;&#x6B64;&#x57FA;&#x5C3C;&#x6307;&#x6570;&#x8D8A;&#x5C11;&#xFF0C;&#x6570;&#x636E;&#x96C6;D&#x5305;&#x542B;&#x7684;&#x4FE1;&#x606F;&#x91CF;&#x8D8A;&#x5C11;&#x3002;CART&#x5728;&#x5019;&#x9009;&#x7279;&#x5F81;&#x96C6;&#x4E2D;&#x9009;&#x53D6;&#x4E00;&#x4E2A;&#x7279;&#x5F81;&#xFF0C;&#x4F7F;&#x5F97;&#x5212;&#x5206;&#x540E;&#x57FA;&#x5C3C;&#x6307;&#x6570;&#x6700;&#x5C0F;&#x3002;</p>
+<h3 id="&#x9632;&#x6B62;&#x8FC7;&#x62DF;&#x5408;"><a href="#&#x9632;&#x6B62;&#x8FC7;&#x62DF;&#x5408;" class="headerlink" title="&#x9632;&#x6B62;&#x8FC7;&#x62DF;&#x5408;"></a><strong>&#x9632;&#x6B62;&#x8FC7;&#x62DF;&#x5408;</strong></h3><p>&#x51B3;&#x7B56;&#x6811;&#x9632;&#x6B62;&#x8FC7;&#x62DF;&#x5408;&#x7684;&#x65B9;&#x6CD5;&#x5206;&#x522B;&#x662F;&#xFF1A;</p>
+<ul>
+<li>&#x526A;&#x679D;&#xFF1A;&#x5305;&#x62EC;&#x9884;&#x526A;&#x679D;&#x3001;&#x540E;&#x526A;&#x679D;</li>
+<li>&#x96C6;&#x6210;&#x5B66;&#x4E60;</li>
+</ul>
+<p>&#x5B9E;&#x9645;&#x7ECF;&#x9A8C;&#x8868;&#x660E;&#xFF0C;&#x51B3;&#x7B56;&#x6811;&#x5212;&#x5206;&#x6807;&#x51C6;&#x7684;&#x9009;&#x62E9;&#xFF0C;&#x5982;&#x4FE1;&#x606F;&#x589E;&#x76CA;&#x3001;&#x4FE1;&#x606F;&#x589E;&#x76CA;&#x7387;&#x3001;&#x57FA;&#x5C3C;&#x6307;&#x6570;&#x867D;&#x7136;&#x5BF9;&#x51B3;&#x7B56;&#x6811;&#x7684;&#x6DF1;&#x5EA6;&#x6709;&#x8F83;&#x5927;&#x5F71;&#x54CD;&#xFF0C;&#x4F46;&#x5BF9;&#x6CDB;&#x5316;&#x6027;&#x80FD;&#x5F71;&#x54CD;&#x6709;&#x9650;&#x3002;&#x800C;&#x526A;&#x679D;&#x5BF9;&#x51B3;&#x7B56;&#x6811;&#x6CDB;&#x5316;&#x6027;&#x80FD;&#x7684;&#x5F71;&#x54CD;&#x662F;&#x76F8;&#x5F53;&#x663E;&#x8457;&#x7684;&#x3002;</p>
+<h2 id="2-bagging&#x96C6;&#x6210;"><a href="#2&#x3001;Bagging&#x96C6;&#x6210;" class="headerlink" title="2&#x3001;Bagging&#x96C6;&#x6210;"></a><strong>2&#x3001;Bagging&#x96C6;&#x6210;</strong></h2><p>&#x5982;&#x524D;&#x6240;&#x8FF0;&#xFF0C;&#x8BAD;&#x7EC3;&#x6BCF;&#x4E2A;&#x5206;&#x7C7B;&#x5668;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x6BCF;&#x6B21;&#x4ECE;&#x8BAD;&#x7EC3;&#x6570;&#x636E;&#x96C6;&#x4E2D;&#x91C7;&#x6837;&#xFF0C;&#x7528;&#x6837;&#x672C;&#x96C6;&#x8BAD;&#x7EC3;&#x57FA;&#x5206;&#x7C7B;&#x5668;&#x3002;Bagging&#x662F;&#x4E00;&#x79CD;&#x6709;&#x653E;&#x56DE;&#x7684;&#x91C7;&#x6837;&#x3002;&#x4E5F;&#x5C31;&#x662F;&#x8BAD;&#x7EC3;&#x7684;&#x65F6;&#x5019;&#x4F7F;&#x7528;&#x4E86;&#x76F8;&#x4E92;&#x6709;&#x4EA4;&#x53E0;&#x7684;&#x5B50;&#x96C6;&#x3002;</p>
+<h2 id="3-&#x968F;&#x673A;&#x68EE;&#x6797;random-forest"><a href="#3&#x3001;&#x968F;&#x673A;&#x68EE;&#x6797;-Random-Forest" class="headerlink" title="3&#x3001;&#x968F;&#x673A;&#x68EE;&#x6797;(Random Forest)"></a><strong>3&#x3001;&#x968F;&#x673A;&#x68EE;&#x6797;(Random Forest)</strong></h2><ul>
+<li>&#x968F;&#x673A;&#x68EE;&#x6797;&#x5728;&#x4EE5;&#x51B3;&#x7B56;&#x6811;&#x4E3A;&#x57FA;&#x5B66;&#x4E60;&#x5668;&#x6784;&#x5EFA;bagging&#x96C6;&#x6210;&#x57FA;&#x7840;&#x4E0A;&#x505A;&#x4E86;&#x4E00;&#x4E9B;&#x4FEE;&#x6539;&#xFF1A;&#x5728;&#x51B3;&#x7B56;&#x6811;&#x8BAD;&#x7EC3;&#x7684;&#x8FC7;&#x7A0B;&#x4E2D;&#x5F15;&#x5165;&#x4E86;&#x968F;&#x673A;&#x7684;&#x5C5E;&#x6027;&#x9009;&#x62E9;&#xFF0C;&#x5BF9;&#x51B3;&#x7B56;&#x6811;&#x7684;&#x6BCF;&#x4E2A;&#x8282;&#x70B9;&#xFF0C;&#x4ECE;&#x8BE5;&#x8282;&#x70B9;&#x7684;&#x5C5E;&#x6027;&#x96C6;&#x4E2D;&#x968F;&#x673A;&#x9009;&#x62E9;&#x4E00;&#x4E2A;&#x5B50;&#x96C6;&#xFF0C;&#x7136;&#x540E;&#x518D;&#x4ECE;&#x8FD9;&#x4E2A;&#x5B50;&#x96C6;&#x4E2D;&#x9009;&#x62E9;&#x4E00;&#x4E2A;&#x6700;&#x4F18;&#x7684;&#x5C5E;&#x6027;&#x4F5C;&#x4E3A;&#x5212;&#x5206;&#x3002;&#x8FD9;&#x79CD;&#x968F;&#x673A;&#x9009;&#x62E9;&#x589E;&#x5F3A;&#x4E86;&#x57FA;&#x5B66;&#x4E60;&#x5668;&#x7684;&#x591A;&#x6837;&#x6027;&#x3002;</li>
+<li>&#x5F15;&#x5165;&#x9009;&#x62E9;&#x5C5E;&#x6027;&#x7684;&#x968F;&#x673A;&#x6027;&#xFF0C;&#x964D;&#x4F4E;&#x4E86;&#x5355;&#x4E2A;&#x51B3;&#x7B56;&#x6811;&#x7684;&#x6027;&#x80FD;&#xFF0C;&#x4F46;&#x968F;&#x7740;&#x5B66;&#x4E60;&#x5668;&#x6570;&#x76EE;&#x7684;&#x589E;&#x52A0;&#xFF0C;&#x968F;&#x673A;&#x68EE;&#x6797;&#x6BD4;Bagging&#x6536;&#x655B;&#x5230;&#x66F4;&#x4F4E;&#x7684;&#x6CDB;&#x5316;&#x8BEF;&#x5DEE;&#x3002;</li>
+</ul>
+<hr>
+<h1 id="boosting"><a href="#Boosting" class="headerlink" title="Boosting"></a><strong>Boosting</strong></h1><p>1&#x3001;&#x5E38;&#x7528;&#x7684;&#x63D0;&#x5347;&#x7B97;&#x6CD5;&#x5305;&#x62EC;Adaboost(&#x81EA;&#x9002;&#x5E94;&#x63D0;&#x5347;&#x7B97;&#x6CD5;)&#x3001;Gradient Boost&#xFF08;&#x68AF;&#x5EA6;&#x63D0;&#x5347;&#xFF09;&#x7B49;&#x3002;<br>Boosting&#x7B97;&#x6CD5;&#x7684;&#x8BAD;&#x7EC3;&#x8FC7;&#x7A0B;&#x662F;&#xFF1A;&#x4ECE;&#x521D;&#x59CB;&#x8BAD;&#x7EC3;&#x96C6;&#x4E2D;&#x8BAD;&#x7EC3;&#x51FA;&#x4E00;&#x4E2A;&#x57FA;&#x5B66;&#x4E60;&#x5668;&#xFF0C;&#x518D;&#x6839;&#x636E;&#x57FA;&#x5B66;&#x4E60;&#x5668;&#x8C03;&#x6574;&#x8BAD;&#x7EC3;&#x6837;&#x672C;&#x7684;&#x5206;&#x5E03;&#xFF0C;&#x4F7F;&#x5F97;&#x5148;&#x524D;&#x5206;&#x7C7B;&#x9519;&#x8BEF;&#x7684;&#x6837;&#x672C;&#x83B7;&#x5F97;&#x66F4;&#x591A;&#x7684;&#x5173;&#x6CE8;&#xFF0C;&#x7136;&#x540E;&#x7528;&#x8C03;&#x6574;&#x540E;&#x7684;&#x6837;&#x672C;&#x5206;&#x5E03;&#x8BAD;&#x7EC3;&#x4E0B;&#x4E00;&#x4E2A;&#x57FA;&#x5B66;&#x4E60;&#x5668;&#x3002;&#x5982;&#x6B64;&#x91CD;&#x590D;&#x76F4;&#x5230;&#x57FA;&#x5B66;&#x4E60;&#x5668;&#x6570;&#x76EE;&#x8FBE;&#x5230;&#x9884;&#x5B9A;&#x7684;&#x503C;&#x3002;&#x6700;&#x540E;&#x8F93;&#x51FA;&#x662F;&#x8FD9;T&#x4E2A;&#x5B66;&#x4E60;&#x5668;&#x7684;&#x67D0;&#x79CD;&#x52A0;&#x6743;&#x3002;<br>2&#x3001;&#x63D0;&#x5347;&#x7B97;&#x6CD5;&#x7684;&#x5173;&#x952E;&#x6709;&#x4E24;&#x4E2A;&#xFF0C;&#x4E00;&#x662F;&#x5982;&#x4F55;&#x6539;&#x53D8;&#x8BAD;&#x7EC3;&#x6837;&#x672C;&#x7684;&#x5206;&#x5E03;&#xFF1B;&#x4E8C;&#x662F;&#x5982;&#x4F55;&#x5C06;&#x5F31;&#x5206;&#x7C7B;&#x5668;&#x7EC4;&#x5408;&#x6210;&#x5F3A;&#x5206;&#x7C7B;&#x5668;&#x3002;<br>Adaboost&#x8BAD;&#x7EC3;&#x65F6;&#x63D0;&#x9AD8;&#x90A3;&#x4E9B;&#x88AB;&#x524D;&#x4E00;&#x8F6E;&#x5206;&#x7C7B;&#x9519;&#x8BEF;&#x7684;&#x6837;&#x672C;&#x7684;&#x6743;&#x503C;&#xFF0C;&#x800C;&#x964D;&#x4F4E;&#x90A3;&#x4E9B;&#x88AB;&#x5206;&#x7C7B;&#x6B63;&#x786E;&#x7684;&#x6837;&#x672C;&#x7684;&#x6743;&#x503C;&#xFF1B;Gradient Boost&#x6BCF;&#x4E00;&#x6B21;&#x7684;&#x8BA1;&#x7B97;&#x90FD;&#x662F;&#x4E3A;&#x4E86;&#x51CF;&#x5C11;&#x4E0A;&#x4E00;&#x6B21;&#x7684;&#x6B8B;&#x5DEE;&#xFF0C;&#x4F7F;&#x5F97;&#x635F;&#x5931;&#x51FD;&#x6570;&#x5728;&#x68AF;&#x5EA6;&#x65B9;&#x5411;&#x4E0B;&#x964D;&#x3002;</p>
+<p><strong>Adaboost&#x7B97;&#x6CD5;</strong></p>
+<blockquote>
+<p>&#x8F93;&#x5165;&#xFF1A;&#x8BAD;&#x7EC3;&#x96C6;D={(x1,y1),(x2,y2),&#x2026;,(xm,ym)};&#x57FA;&#x5B66;&#x4E60;&#x7B97;&#x6CD5;$\varepsilon$;&#x8BAD;&#x7EC3;&#x8F6E;&#x6570;T<br>&#x8FC7;&#x7A0B;&#xFF1A;<br>1&#x3001;$D_1(x)=\frac{1}{m}$<br>2&#x3001;for t=1,2,3,&#x2026;,T,do<br>$h_t=\varepsilon(D,D_t)$<br>$\varepsilon_t=P_{x\sim D_t}(h_t(x)\ne f(x))$<br>if $\varepsilon_t&gt;0.5$,then break<br>$\alpha_t=\frac{1}{2}ln\frac{1-\varepsilon_t}{\varepsilon_t}$<br>$D_{t+1}(x)=\frac{D_t(x)}{Z_t}\times\begin{cases}exp(-\alpha_t),if&#x3000;h_t(x)=f(x)\\exp(\alpha_t),if&#x3000; h_t(x)\ne f(x)\end{cases}$<br>end for<br>&#x8F93;&#x51FA;: $H(x)=sign(\Sigma_{t=1}^T\alpha_t h_t(x))$</p>
+</blockquote>
+<hr>
+<p>&#x53C2;&#x8003;&#x6587;&#x732E;&#xFF1A;<br>[1]&#x674E;&#x822A;.&#x7EDF;&#x8BA1;&#x5B66;&#x4E60;&#x65B9;&#x6CD5;<br>[2]&#x5468;&#x5FD7;&#x534E;.&#x673A;&#x5668;&#x5B66;&#x4E60;</p>
+
       
     </div>
     
@@ -370,10 +503,6 @@
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Machine-Learning/">Machine Learning</a></li></ul>
     </div>
 
-      
-        <p class="article-more-link">
-          <a href="/2016/05/31/A Brief Overview on Ensemble Learning/#more">more >></a>
-        </p>
       
       <div class="clearfix"></div>
     </div>
